@@ -13,7 +13,6 @@
  *
  */
 
-//TODO 请配置如下节点
 //指定OBS服务相关信息：AK，SK，EndPoint
 export const obsConfig = {
     AccessKeyId: '',      //AK

@@ -1,9 +1,9 @@
 {
-    "package": "hui.mobi.start",//TODO 请更换成你自己的快应用包名
-    "name": "我的快应用",//TODO 请更换成你自己的快应用名称
+    "package": "hui.mobi.start",
+    "name": "我的快应用",
     "versionName": "1.0.0",
     "versionCode": 1,
-    "icon": "/Common/icons/logo.png",//TODO 请将这个logo更换成你自己的快应用logo
+    "icon": "/Common/icons/logo.png",
     "minPlatformVersion": 1060,
     "features": [
         {
