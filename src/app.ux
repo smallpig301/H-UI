@@ -1,0 +1,18 @@
+<script>
+    const injectRef = Object.getPrototypeOf(global) || global
+
+    // 注入regeneratorRuntime
+    injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
+    module.exports = {
+        onCreate() {
+            console.info('Application onCreate');
+        },
+        onDestroy() {
+            console.info('Application onDestroy');
+        },
+        dataApp: {
+            localeData: {}
+        }
+    }
+</script>
