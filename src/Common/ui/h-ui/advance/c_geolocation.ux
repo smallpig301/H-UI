@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="geolocation">
+    <div class="geolocation" style="{{hStyle}}">
         <div class="geolocation-title" onclick="handleClick">
             <text class="icon">&#xe852;</text>
             <div if="{{value === ''}}">
@@ -70,6 +70,9 @@
         props: {
             id: {},
             location: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

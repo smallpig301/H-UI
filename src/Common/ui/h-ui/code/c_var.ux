@@ -14,11 +14,11 @@
 */
 
 <template>
-    <text class="italic">{{text}}</text>
+    <text class="italic {{font}}" style="{{hStyle}}">{{text}}</text>
 </template>
 
 <style lang="less">
-    @import '../../../styles/variables.less';
+    @import '../../../styles/font.less';
 
     .italic{
         font-style: italic;
@@ -28,7 +28,17 @@
 </style>
 
 <script>
-  export default {
-    props: ['text']
-  }
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
+    }
 </script>

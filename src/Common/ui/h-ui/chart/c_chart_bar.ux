@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="canvas-container">
+    <div class="canvas-container" style="{{hStyle}}">
         <canvas id="{{id}}" ontouchstart="handleTouchstart"></canvas>
     </div>
 </template>
@@ -41,11 +41,16 @@
             data: {},
             color: {
                 default: '#4c98d5'
+            },
+            hStyle:{
+                default: ''
             }
         },
 
-        onReady() {
-            this.drawChart()
+        onInit(){
+            setTimeout(() => {
+                this.drawChart()
+            }, 100);
         },
 
         drawChart(){
@@ -150,6 +155,7 @@
             }
 
         },
+
         computed: {
             stepValue() {
                 var max = 0;

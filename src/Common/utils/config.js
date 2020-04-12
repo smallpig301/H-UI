@@ -13,6 +13,9 @@
  *
  */
 
+export const loaderConfig = {
+    type: 'HUAWEI' //快应用加载器类型。华为快应用加载器设为"HUAWEI",否则为快应用联盟'UNION'加载器
+}
 //指定OBS服务相关信息：AK，SK，EndPoint
 export const obsConfig = {
     AccessKeyId: '',      //AK

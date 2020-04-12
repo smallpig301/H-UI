@@ -15,7 +15,7 @@
 
 <import name="toast" src="../feedback/c_toast"></import>
 <template>
-    <div class="brightness">
+    <div class="brightness" style="{{hStyle}}">
         <text class="icon {{type + '-icon'}}">&#xe729;</text>
         <slider id="{{id}}" class="brightness-slider {{type}}" min="0" max="255" value="{{compValue}}" onchange="getValue('compValue')"></slider>
         <text class="{{type + '-icon'}}">{{compValue}}</text>
@@ -104,6 +104,9 @@
             },
             showToast: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 

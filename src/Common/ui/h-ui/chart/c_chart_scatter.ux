@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="canvas-container">
+    <div class="canvas-container" style="{{hStyle}}">
         <canvas id="{{id}}" ontouchstart="handleTouchstart"></canvas>
     </div>
 </template>
@@ -53,16 +53,21 @@
             },
             group: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 
-        onReady() {
-            // 时钟图数据处理
-            if(this.clock){
-                this.drawClockChart()
-            }else {
-                this.drawChart()
-            }
+        onInit(){
+            setTimeout(() => {
+                // 时钟图数据处理
+                if(this.clock){
+                    this.drawClockChart()
+                }else {
+                    this.drawChart()
+                }
+            }, 100);
         },
 
         drawChart(){
@@ -106,6 +111,9 @@
             ctx.moveTo(right , bottom)
             ctx.lineTo(right , y)
             ctx.stroke()
+            ctx.closePath()
+
+            ctx.beginPath()
 
             // y轴参考线
             y = top
@@ -118,6 +126,8 @@
             ctx.setLineDash([6, 3])
             ctx.stroke()
             ctx.closePath()
+
+            ctx.beginPath()
 
             // x轴参考线
             x = left + 120
@@ -385,9 +395,9 @@
             compData(){
                 var arr = []
                 for(var i = 0, len = this.data.length; i < len; i++){
-                    var size = this.size
+                    var size = Number(this.size)
                     if(this.compBubble){
-                        size = (this.data[i][this.compStructure[2]] / this.compMaxValue)*50
+                        size = Math.ceil((Number(this.data[i][this.compStructure[2]]) / this.compMaxValue)*50)
                     }
                     var color = this.color
 

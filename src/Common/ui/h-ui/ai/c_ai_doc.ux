@@ -24,8 +24,8 @@
         <div if="{{isShow}}" class="mask" style="{{maskHeight}}">
             <div class="mask-top {{bgColor}}">
                 <div>
-                    <pickimage id="pick" size="85" color="white" class="pick"></pickimage>
-                    <takephoto id="takephoto" size="75" color="white" class="pick"></takephoto>
+                    <pickimage id="pick" size="85" color="white" h-style="padding:10px;"></pickimage>
+                    <takephoto id="takephoto" size="75" color="white" h-style="padding:10px;"></takephoto>
                 </div>
                 <div>
                     <!--<text id="refineDoc" class="icon icon-tool white" onclick="handleRefineDoc">&#xe7c9;</text>-->

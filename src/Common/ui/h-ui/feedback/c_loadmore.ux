@@ -15,7 +15,7 @@
 
 <import name="divider" src="../advance/c_divider"></import>
 <template>
-    <div class="loadmore">
+    <div class="loadmore" style="{{hStyle}}">
         <divider if="{{status==='more'}}" text="{{moreText}}"></divider>
         <div if="{{status==='loading'}}" class="loadmore-loading">
             <progress class="loadmore-circular" type="circular"></progress>
@@ -54,6 +54,9 @@
         },
         noMoreText:{
             default: '没有更多'
+        },
+        hStyle:{
+            default: ''
         }
     }
   }

@@ -14,10 +14,14 @@
 */
 
 <template>
-    <div style="{{compStyle}}">
+    <div class="{{bgColor}}" style="{{compStyle}}{{hStyle}}">
         <slot></slot>
     </div>
 </template>
+
+<style lang="less">
+    @import '../../../styles/bg-color.less';
+</style>
 
 <script>
     export default {
@@ -27,6 +31,18 @@
             },
             offset: {
                 default: '0'
+            },
+            justify: {
+                default: 'left'        //项目在主轴上的对齐方式。支持：left(默认),center,right,between,around
+            },
+            align: {
+                default: 'stretch'     //项目在交叉轴上如何对齐。支持：stretch(默认),top,middle,bottom,baseline
+            },
+            bgColor: {
+                default: ''
+            },
+            hStyle: {
+                default: ''
             }
         },
         computed: {
@@ -34,20 +50,56 @@
                 var style = ''
                 var colWidth = Math.ceil(Number(this.width))
 
-                if(colWidth < 1){
+                if (colWidth < 1) {
                     colWidth = 1
                 }
-                if(colWidth > 12){
+                if (colWidth > 12) {
                     colWidth = 12
                 }
                 colWidth *= 57
 
                 style = 'width: ' + colWidth + 'px;'
 
-                if(this.offset !== '0'){
+                if (this.offset !== '0') {
                     var offsetWidth = Math.ceil(Number(this.offset))
                     offsetWidth *= 57
                     style += 'margin-left: ' + offsetWidth + 'px;'
+                }
+
+                switch (this.justify) {
+                    case 'right':
+                        style += 'justify-content: flex-end;'
+                        break
+                    case 'center':
+                        style += 'justify-content: center;'
+                        break
+                    case 'between':
+                        style += 'justify-content: space-between;'
+                        break
+                    case 'around':
+                        style += 'justify-content: space-around;'
+                        break
+                    default:
+                        style += 'justify-content: flex-start;'
+                        break
+                }
+
+                switch (this.align) {
+                    case 'top':
+                        style += 'align-items: flex-start;'
+                        break
+                    case 'middle':
+                        style += 'align-items: center;'
+                        break
+                    case 'bottom':
+                        style += 'align-items: flex-end;'
+                        break
+                    case 'baseline':
+                        style += 'align-items: baseline;'
+                        break
+                    default:
+                        style += 'align-items: stretch;'
+                        break
                 }
 
                 return style

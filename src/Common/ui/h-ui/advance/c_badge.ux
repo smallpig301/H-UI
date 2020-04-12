@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div>
+    <div style="{{hStyle}}">
         <slot></slot>
         <text class="badge {{compStyle}}" style="{{compBackgroundColor}}">{{compText}}</text>
     </div>
@@ -48,13 +48,16 @@
               // 支持dot，number，text
               default: 'dot'
           },
-          bgColor: {
+          hexColor: {
               default: '#ff0000'
+          },
+          hStyle:{
+              default: ''
           }
       },
       computed: {
           compBackgroundColor() {
-              return 'background-color: '+this.bgColor+';'
+              return 'background-color: '+this.hexColor+';'
           },
           compStyle() {
               return this.type==='dot' ? 'badge-dot' : 'badge-text'

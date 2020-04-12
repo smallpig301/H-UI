@@ -14,11 +14,11 @@
 */
 
 <template>
-    <text class="small">{{text}}</text>
+    <text class="small {{font}}" style="{{hStyle}}">{{text}}</text>
 </template>
 
 <style lang="less">
-    @import '../../../styles/variables.less';
+    @import '../../../styles/font.less';
 
     .small {
         font-size: @font-size-small;
@@ -27,7 +27,17 @@
 </style>
 
 <script>
-  export default {
-    props: ['text']
-  }
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
+    }
 </script>

@@ -14,21 +14,23 @@
 */
 
 <template>
-    <div class="tags">
+    <div class="tags" style="{{hStyle}}">
         <block for="{{data}}">
-            <text class="tag" onclick="showDetail({{$item}})">{{$item}}</text>
+            <text class="tag {{font}}" onclick="showDetail($item)">{{$item}}</text>
         </block>
     </div>
 </template>
 
 <style lang="less">
+    @import '../../../styles/font.less';
+    @import '../../../styles/bg-color.less';
+
     .tags {
         flex-direction: row;
         flex-wrap: wrap;
     }
     .tag {
         background-color: #f3f3f3;
-        color: #1a1a1a;
         text-align: center;
         margin: 10px 16px 10px 0px;
         padding-left:25px;
@@ -45,15 +47,21 @@
     export default {
         props: {
             data:{},
-            url: {
+            uri: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },
         showDetail: function(tag) {
-            if(this.url!=='') {
+            if(this.uri !== '') {
                 //跳转相应页面
                 router.push({
-                    uri: this.url + tag
+                    uri: this.uri + tag
                 });
             }
         }

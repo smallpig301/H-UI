@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div>
+    <div style="{{hStyle}}">
         <text class="icon {{color}}" style="{{compSize}}" onclick="handleShare">&#xe78c;</text>
     </div>
 </template>
@@ -47,6 +47,9 @@
                 default: ''
             },
             image: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

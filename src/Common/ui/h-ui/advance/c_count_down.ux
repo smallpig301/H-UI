@@ -15,7 +15,7 @@
 
 <import name="toast" src="../feedback/c_toast"></import>
 <template>
-    <div class="countdown">
+    <div class="countdown" style="{{hStyle}}">
         <text if="{{showDay}}" class="{{compStyle}}">{{compDays}}</text>
         <text if="{{showDay}}"> 天 </text>
 
@@ -71,6 +71,9 @@
             },
             showToast: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 

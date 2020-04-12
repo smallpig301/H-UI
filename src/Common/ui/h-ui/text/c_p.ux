@@ -14,11 +14,11 @@
 */
 
 <template>
-    <text class="p">{{text}}</text>
+    <text class="p {{font}}" style="{{hStyle}}">{{text}}</text>
 </template>
 
 <style lang="less">
-    @import '../../../styles/variables.less';
+    @import '../../../styles/font.less';
 
     .p{
         text-indent:@text-indent-base;
@@ -27,7 +27,17 @@
 </style>
 
 <script>
-  export default {
-    props: ['text']
-  }
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
+    }
 </script>

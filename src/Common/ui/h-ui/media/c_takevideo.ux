@@ -14,7 +14,7 @@
 */
 
 <template>
-    <text id="{{id}}" class="icon {{color}}" style="{{compSize}}" onclick="takeVideo">&#xe81d;</text>
+    <text id="{{id}}" class="icon {{color}}" style="{{compSize}}{{hStyle}}" onclick="takeVideo">&#xe81d;</text>
 </template>
 
 <style lang="less">
@@ -40,6 +40,9 @@
             },
             color: {
                 default: 'sub'
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

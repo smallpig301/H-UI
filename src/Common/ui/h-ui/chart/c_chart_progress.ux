@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="canvas-container">
+    <div class="canvas-container" style="{{hStyle}}">
         <canvas id="{{id}}" style="{{compStyle}}"></canvas>
     </div>
 </template>
@@ -41,11 +41,16 @@
             textInside: {
                 // 进度条显示文字内置在进度条内（只在 type=line 时可用）
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 
-        onReady() {
-            this.drawChart()
+        onInit(){
+            setTimeout(() => {
+                this.drawChart()
+            }, 100);
         },
 
         drawChart(){

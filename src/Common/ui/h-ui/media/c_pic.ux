@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div style="{{compStyle}}">
+    <div style="{{compStyle}}{{hStyle}}">
         <image if="{{!empty && !error}}" src="{{src}}" style="{{imageRadius}}"></image>
         <text if="{{empty}}" class="icon">&#xe813;</text>
         <text if="{{error}}" class="icon">&#xe727;</text>
@@ -40,124 +40,136 @@
 </style>
 
 <script>
-  export default {
-      props: {
-          src: {},
-          width: {
-              default: '150'
-          },
-          height: {
-              default: '150'
-          },
-          radius: {
-              default: ''
-          },
-          radiusMode: {
-              default: 'all'
-          },
-          outline: {
-              default: false
-          },
-          empty: {
-              default: false
-          },
-          error: {
-              default: false
-          }
-      },
-      computed: {
-          compStyle() {
-              var style = 'width:'+this.width+'px;'
-              style += 'height:'+this.height+'px;'
-              style += 'align-items: center;justify-content: center;'
+    import { loaderConfig } from '../../../utils/config'
+    export default {
+        props: {
+            src: {},
+            width: {
+                default: '150'
+            },
+            height: {
+                default: '150'
+            },
+            radius: {
+                default: ''
+            },
+            radiusMode: {
+                default: 'all'
+            },
+            outline: {
+                default: false
+            },
+            empty: {
+                default: false
+            },
+            error: {
+                default: false
+            },
+            hStyle:{
+                default: ''
+            }
+        },
+        computed: {
+            compStyle() {
+                var style = 'width:'+this.width+'px;'
+                style += 'height:'+this.height+'px;'
+                style += 'align-items: center;justify-content: center;'
 
-              if(this.outline){
-                  style += 'padding: 10px;border-width: 2px;border-color: #dddddd;' + this.borderRadius
-              }
+                if(this.outline){
+                    style += 'padding: 10px;border-width: 2px;border-color: #dddddd;' + this.borderRadius
+                }
 
-              return  style
-          },
-          borderRadius() {
-              var radiusValue = 0
-              var flag = false
-              if(this.radius === ''){
-                  if(this.outline){
-                      radiusValue = 8
-                      flag = true
-                  }
-              }else{
-                  radiusValue = this.radius
-                  flag = true
-              }
+                return  style
+            },
+            borderRadius() {
+                var radiusValue = 0
+                var flag = false
+                if(this.radius === ''){
+                    if(this.outline){
+                        radiusValue = 8
+                        flag = true
+                    }
+                }else{
+                    radiusValue = this.radius
+                    flag = true
+                }
 
-              var style = ''
-              if(flag){
-                  switch (this.radiusMode) {
-                      case 'top':
-                          style = 'border-top-left-radius:' + radiusValue + 'px;'
-                          style += 'border-top-right-radius:' + radiusValue + 'px;'
-                          break
-                      case 'bottom':
-                          style = 'border-bottom-left-radius:' + radiusValue + 'px;'
-                          style += 'border-bottom-right-radius:' + radiusValue + 'px;'
-                          break
-                      case 'left':
-                          style = 'border-top-left-radius:' + radiusValue + 'px;'
-                          style += 'border-bottom-left-radius:' + radiusValue + 'px;'
-                          break
-                      case 'right':
-                          style = 'border-top-right-radius:' + radiusValue + 'px;'
-                          style += 'border-bottom-right-radius:' + radiusValue + 'px;'
-                          break
-                      default:
-                          style = 'border-radius:' + radiusValue + 'px;'
-                          break
-                  }
-              }
+                var style = ''
+                if(flag){
+                    switch (this.radiusMode) {
+                        case 'top':
+                            style = 'border-top-left-radius:' + radiusValue + 'px;'
+                            style += 'border-top-right-radius:' + radiusValue + 'px;'
+                            break
+                        case 'bottom':
+                            style = 'border-bottom-left-radius:' + radiusValue + 'px;'
+                            style += 'border-bottom-right-radius:' + radiusValue + 'px;'
+                            break
+                        case 'left':
+                            style = 'border-top-left-radius:' + radiusValue + 'px;'
+                            style += 'border-bottom-left-radius:' + radiusValue + 'px;'
+                            break
+                        case 'right':
+                            style = 'border-top-right-radius:' + radiusValue + 'px;'
+                            style += 'border-bottom-right-radius:' + radiusValue + 'px;'
+                            break
+                        default:
+                            style = 'border-radius:' + radiusValue + 'px;'
+                            break
+                    }
+                }
 
-              return style
-          },
-          imageRadius() {
-              var radiusValue = 0
-              var flag = false
-              if(this.radius === ''){
-                  if(this.outline){
-                      radiusValue = 8
-                      flag = true
-                  }
-              }else{
-                  radiusValue = this.radius
-                  flag = true
-              }
+                return style
+            },
+            imageRadius() {
+                var radiusValue = 0
+                var flag = false
+                if(this.radius === ''){
+                    if(this.outline){
+                        radiusValue = 8
+                        flag = true
+                    }
+                }else{
+                    radiusValue = this.radius
+                    flag = true
+                }
 
-              var style = ''
-              if(flag){
-                  switch (this.radiusMode) {
-                      case 'top':
-                          style = 'border-top-left-radius:' + radiusValue + 'px;'
-                          style += 'border-top-right-radius:' + radiusValue + 'px;'
-                          break
-                      case 'bottom':
-                          style = 'border-bottom-left-radius:' + radiusValue + 'px;'
-                          style += 'border-bottom-right-radius:' + radiusValue + 'px;'
-                          break
-                      case 'left':
-                          style = 'border-top-left-radius:' + radiusValue + 'px;'
-                          style += 'border-bottom-right-radius:' + radiusValue + 'px;'//TODO 官方bug，图片底部圆角解析反了
-                          break
-                      case 'right':
-                          style = 'border-top-right-radius:' + radiusValue + 'px;'
-                          style += 'border-bottom-left-radius:' + radiusValue + 'px;'//TODO 官方bug，图片底部圆角解析反了
-                          break
-                      default:
-                          style = 'border-radius:' + radiusValue + 'px;'
-                          break
-                  }
-              }
+                var style = ''
+                if(flag){
+                    switch (this.radiusMode) {
+                        case 'top':
+                            style = 'border-top-left-radius:' + radiusValue + 'px;'
+                            style += 'border-top-right-radius:' + radiusValue + 'px;'
+                            break
+                        case 'bottom':
+                            style = 'border-bottom-left-radius:' + radiusValue + 'px;'
+                            style += 'border-bottom-right-radius:' + radiusValue + 'px;'
+                            break
+                        case 'left':
+                            style = 'border-top-left-radius:' + radiusValue + 'px;'
+                            if(loaderConfig.type.toUpperCase() === 'HUAWEI'){
+                                style += 'border-bottom-right-radius:' + radiusValue + 'px;'//TODO 快应用bug，图片底部圆角解析反了
+                            }else {
+                                style += 'border-bottom-left-radius:' + radiusValue + 'px;'
+                            }
+                            break
+                        case 'right':
+                            style = 'border-top-right-radius:' + radiusValue + 'px;'
+                            if(loaderConfig.type.toUpperCase() === 'HUAWEI'){
+                                style += 'border-bottom-left-radius:' + radiusValue + 'px;'//TODO 快应用bug，图片底部圆角解析反了
+                            }else {
+                                style += 'border-bottom-right-radius:' + radiusValue + 'px;'
+                            }
+                            break
+                        default:
+                            style = 'border-radius:' + radiusValue + 'px;'
+                            break
+                    }
+                }
 
-              return style
-          }
-      }
+                return style
+            }
+        }
 
-  }
+    }
 </script>

@@ -15,24 +15,30 @@
 
 <import name="flex-col" src="../basic/c_flex_col"></import>
 <template>
-    <flex-col class="td" width="{{width}}">
-        <slot></slot>
+    <flex-col width="{{width}}" justify="center" h-style="padding-top:20px;padding-right:5px;padding-bottom:20px;padding-left:5px;{{hStyle}}">
+        <text class="{{font}}">{{text}}</text>
     </flex-col>
 </template>
 
 <style lang="less">
-    .td{
-        justify-content:center;
-        padding: 20px 5px;
-    }
+    @import '../../../styles/font.less';
 </style>
 
 <script>
     export default {
         props: {
+            text: {
+                default: ''
+            },
             width: {
-                default: '4'
+                default: 4
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
             }
         }
-    };
+    }
 </script>

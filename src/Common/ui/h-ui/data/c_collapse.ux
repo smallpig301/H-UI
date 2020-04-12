@@ -16,7 +16,7 @@
 <import name="icon" src="../basic/c_icon"></import>
 <import name="avatar" src="../advance/c_avatar"></import>
 <template>
-    <div class="c-container">
+    <div class="c-container" style="{{hStyle}}">
         <block for="{{compData}}">
             <div class="collapse">
                 <div class="collapse-top" onclick="handleClick($idx)">
@@ -24,7 +24,7 @@
                         <div if="{{$item.icon !== ''}}" class="collapse-top-title-icon {{$item.bgColor}}">
                             <icon type="{{$item.icon}}" size="36" color="white"></icon>
                         </div>
-                        <avatar if="{{$item.image !== ''}}" src="{{$item.image}}" size="46" class="collapse-top-title-avatar"></avatar>
+                        <avatar if="{{$item.image !== ''}}" src="{{$item.image}}" size="46" h-style="margin-right:10px;"></avatar>
                         <text if="{{$item.title !== ''}}">{{$item.title}}</text>
                     </div>
                     <div class="collapse-top-button">
@@ -71,10 +71,7 @@
                     border-radius: 23px;
                     align-items: center;
                     justify-content: center;
-                    margin: 0 10px 0 10px;
-                }
-                &-avatar{
-                    margin: 0 10px 0 10px;
+                    margin-right:10px;
                 }
             }
             &-button{
@@ -99,6 +96,9 @@
             },
             accordion: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 

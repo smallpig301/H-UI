@@ -15,10 +15,10 @@
 
 <import name="h5" src="../text/c_h5"></import>
 <template>
-    <div class="news">
+    <div class="news" style="{{hStyle}}">
         <video class="news-video" src="{{data.src}}" poster="{{data.poster}}"></video>
         <div class="news-info">
-            <h5 class="news-info-title" text="{{data.title}}"></h5>
+            <h5 h-style="margin-top:30px;margin-bottom:10px;color:#1a1a1a;" text="{{data.title}}"></h5>
             <div>
                 <text class="news-info-source">{{data.source}}</text>
                 <text class="news-info-source">{{data.date}}</text>
@@ -44,10 +44,6 @@
             margin-right: 33px;
             width: 684px;
             flex-direction: column;
-            &-title{
-                margin: 30px 0 10px 0;
-                color: #1a1a1a;
-            }
             &-source{
                 font-size: 28px;
                 color: @color-sub;
@@ -60,7 +56,10 @@
 <script>
     export default {
         props: {
-            data: {}
+            data: {},
+            hStyle:{
+                default: ''
+            }
         },
 
         computed: {

@@ -18,7 +18,7 @@
                 text: '关于H-UI',
                 textColor: "#878787",
                 backgroundColor: "#000000",
-                menu: false
+                menu: true
             });
         }
     }

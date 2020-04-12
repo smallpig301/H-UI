@@ -15,11 +15,11 @@
 
 <import name="icon" src="../basic/c_icon"></import>
 <template>
-    <stack>
+    <stack style="{{hStyle}}">
         <div class="backgroud {{bgColor}}"></div>
         <div style="width:684px;justify-content: center;">
-            <icon if="{{!!typeIcon}}" type="{{typeIcon}}" class="text" color="{{color}}"></icon>
-            <text if="{{!typeIcon}}" class="text {{color}}">{{text}}</text>
+            <icon if="{{!!icon}}" type="{{icon}}" color="{{color}}" h-style="padding: 10px;background-color: #ffffff;"></icon>
+            <text if="{{!icon}}" class="text {{color}}">{{text}}</text>
         </div>
     </stack>
 </template>
@@ -52,7 +52,10 @@
           bgColor:{
               default: 'bg-muted'
           },
-          typeIcon: {}
+          icon: {},
+          hStyle:{
+              default: ''
+          }
       }
   }
 </script>

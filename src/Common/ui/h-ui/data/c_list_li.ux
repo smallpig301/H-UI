@@ -13,14 +13,39 @@
 *
 */
 
+<import name="flex-col" src="../basic/c_flex_col"></import>
 <template>
-    <div class="li">
+    <flex-col width="{{width}}" justify="{{justify}}" align="{{align}}" h-style="flex-direction: column;padding:10px;{{hStyle}}">
+        <text class="{{font}}">{{text}}</text>
         <slot></slot>
-    </div>
+    </flex-col>
 </template>
 
 <style lang="less">
-    .li{
-        padding:10px;
-    }
+    @import '../../../styles/font.less';
 </style>
+
+<script>
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            width: {
+                default: 12
+            },
+            justify: {
+                default: 'left'        //项目在主轴上的对齐方式。支持：left(默认),center,right,between,around
+            },
+            align: {
+                default: 'stretch'     //项目在交叉轴上如何对齐。支持：stretch(默认),top,middle,bottom,baseline
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
+    }
+</script>

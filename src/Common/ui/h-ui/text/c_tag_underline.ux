@@ -14,17 +14,29 @@
 */
 
 <template>
-    <text class="underline">{{text}}</text>
+    <text class="underline {{font}}" style="{{hStyle}}">{{text}}</text>
 </template>
 
 <style lang="less">
+    @import '../../../styles/font.less';
+
     .underline {
         text-decoration: underline;
     }
 </style>
 
 <script>
-  export default {
-    props: ['text']
-  }
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
+    }
 </script>

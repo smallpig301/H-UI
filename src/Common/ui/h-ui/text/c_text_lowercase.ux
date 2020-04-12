@@ -14,18 +14,32 @@
 */
 
 <template>
-    <text>{{lowercaseText}}</text>
+    <text class="{{font}}" style="{{hStyle}}">{{lowercaseText}}</text>
 </template>
 
+<style lang="less">
+    @import '../../../styles/font.less';
+</style>
+
 <script>
-  export default {
-    props: ['text'],
-    computed: {
-        // 计算属性的 getter
-        lowercaseText() {
-          // `this` 指向 vm 实例
-          return this.text.toLowerCase();
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        },
+        computed: {
+            // 计算属性的 getter
+            lowercaseText() {
+                // `this` 指向 vm 实例
+                return this.text.toLowerCase();
+            }
         }
     }
-  }
 </script>

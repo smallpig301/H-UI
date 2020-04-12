@@ -17,9 +17,9 @@
 <import name="icon" src="../basic/c_icon"></import>
 <import name="avatar" src="../advance/c_avatar"></import>
 <template>
-    <flex-row wrap="wrap">
+    <flex-row wrap="wrap" h-style="{{hStyle}}">
         <block for="{{item in compData}}">
-            <div style="{{compStyle}}" class="{{item.borderRight}} {{item.borderBottom}}" onclick="{{handleClick(item.href)}}">
+            <div style="{{compStyle}}" class="{{item.borderRight}} {{item.borderBottom}}" onclick="{{handleClick(item.uri)}}">
                 <div if="{{item.icon !== ''}}" class="{{item.bgColor}}" style="{{item.iconStyle}}">
                     <icon type="{{item.icon}}" size="{{avatarSize * 0.8}}" color="white"></icon>
                 </div>
@@ -58,6 +58,9 @@
             noBorder: {
                 // 是否有边框
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {
@@ -69,7 +72,7 @@
                     var bgColor = !this.data[i]['bgColor'] ? '' : this.data[i]['bgColor']
                     var text = !this.data[i]['text'] ? '' : this.data[i]['text']
                     var image = !this.data[i]['image'] ? '' : this.data[i]['image']
-                    var href = !this.data[i]['href'] ? '' : this.data[i]['href']
+                    var uri = !this.data[i]['uri'] ? '' : this.data[i]['uri']
 
                     var borderRight = this.noBorder ?  '' : ((i+1) % this.columnNum === 0 ? '' : 'borderRight')
                     var borderBottom = this.noBorder ? '' : (Math.ceil((i+1)/this.columnNum) === Math.ceil(len/this.columnNum) ? '' : 'borderBottom')
@@ -80,7 +83,7 @@
                         iconStyle: 'width:'+this.avatarSize+'px;' + 'height:'+this.avatarSize+'px;' + 'border-radius:'+(this.avatarSize/2)+'px;justify-content:center;',
                         text: text,
                         image: image,
-                        href: href,
+                        uri: uri,
                         borderRight: borderRight,
                         borderBottom: borderBottom
                     }
@@ -126,11 +129,11 @@
                 return (this.columnNum <= 3 && this.mode === 'rect') ? 'margin-left:10px;' : ''
             }
         },
-        handleClick(href) {
-            if(!!href) {
+        handleClick(uri) {
+            if(!!uri) {
                 //跳转相应页面
                 router.push({
-                    uri: this.url
+                    uri: uri
                 });
             }
         }

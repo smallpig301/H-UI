@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="form-group">
+    <div class="form-group" style="{{hStyle}}">
         <div class="{{formHorizontalType}} {{noBorder ? 'form-control-no-border' : ''}}">
             <block if="{{formLabelType === 'form-group-label-horizontal'}}">
                 <text if="{{compNotBlank && compTitle!==''}}" class="red">* </text>
@@ -28,10 +28,10 @@
             </block>
 
             <div class="{{compAlign}}" style="{{formHorizontalType==='form-group-horizontal' ? 'width:65%;' : ''}}">
-                <stack>
-                    <slider id="{{id}}" class="slider {{type}}" min="{{min}}" max="{{max}}" value="{{compValue}}" step="{{step}}" disabled="{{disabled}}" onchange="getValue('compValue')"></slider>
-                    <text class="slider-text">{{compValue}}</text>
-                </stack>
+                <div class="slider">
+                    <slider id="{{id}}" class="slider-bar {{type}}" min="{{min}}" max="{{max}}" value="{{compValue}}" step="{{step}}" disabled="{{disabled}}" onchange="getValue('compValue')"></slider>
+                    <text>{{compValue}}</text>
+                </div>
             </div>
         </div>
 
@@ -54,13 +54,15 @@
         font-family: hui;
         font-size: 33px;
     }
-    .slider {
-        flex: 1;
-        width:100%;
-        padding-right: 100px;
-        &-text{
-             width:100%;
-             text-align: right;
+    .slider{
+        width: 684px;
+        margin: 10px 0;
+        align-items: center;
+        justify-content: space-between;
+        &-bar{
+             flex: 1;
+             width:500px;
+             margin: 0 5px;
          }
     }
     .align-right{
@@ -147,6 +149,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

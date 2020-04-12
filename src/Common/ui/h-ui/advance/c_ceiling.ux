@@ -14,7 +14,7 @@
 */
 
 <template>
-    <stack class="ceiling">
+    <div class="ceiling" style="{{hStyle}}">
         <list class="ceiling-list">
             <list-item type="top" ondisappear="handleDisappear" onappear="handleAppear">
                 <slot name="top"></slot>
@@ -30,10 +30,10 @@
         </list>
 
         <!-- 列表中的吸顶元素对应的Mask -->
-        <div show="{{showMask}}">
+        <div class="mask" show="{{showMask}}">
             <slot name="mask"></slot>
         </div>
-    </stack>
+    </div>
 </template>
 
 <style lang="less">
@@ -41,10 +41,22 @@
         flex-direction: column;
         width: 750px;
     }
+    .mask{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 750px;
+    }
 </style>
 
 <script>
   export default {
+      props: {
+          hStyle:{
+              default: ''
+          }
+      },
       data: {
           showMask: false,
           appearCount: 0

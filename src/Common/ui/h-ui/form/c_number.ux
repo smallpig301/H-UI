@@ -15,9 +15,9 @@
 
 <import name="icon" src="../basic/c_icon"></import>
 <template>
-    <div class="form-group">
+    <div class="form-group" style="{{hStyle}}">
         <div show="{{showTip}}" style="align-items: flex-start;">
-            <icon type="tip" color="warning" style="margin-top: 6px;"></icon>
+            <icon type="tip" color="warning" h-style="margin-top: 6px;"></icon>
             <text class="sub small">{{tip}}</text>
         </div>
 
@@ -32,17 +32,17 @@
             </div>
 
             <div class="{{borderType}}" style="{{formHorizontalType==='form-group-horizontal' ? 'width:65%;' : ''}} {{compWidth}}">
-                <icon if="{{typeIcon!==''}}" type="{{typeIcon}}" style="margin-left: 12px;width:36px;"></icon>
+                <icon if="{{typeIcon!==''}}" type="{{typeIcon}}" h-style="margin-left: 12px;width:36px;"></icon>
                 <text if="{{!stepButton && compTitle===''}}" class="red"> * </text>
-                <icon if="{{stepButton}}" type="minus-sign" style="margin-left: 12px;width:56px;" onclick="handleMinus"></icon>
+                <icon if="{{stepButton}}" type="minus-sign" h-style="margin-left: 12px;width:56px;" onclick="handleMinus"></icon>
                 <input type="{{type}}" id="{{id}}" name="{{name}}" class="{{formControlType}}" style="{{compAlign}}"
                         maxlength="{{maxlength}}" value="{{compValue}}"
                         onchange="handleChange" onfocus="handleFocus" onblur="handleBlur">
                 </input>
-                <icon if="{{stepButton}}" type="plus-sign" style="margin-right: 12px;width:56px;" onclick="handlePlus"></icon>
-                <icon if="{{compValidIcon && this.compValid==='has-success'}}" type="ok" color="success" style="margin-right: 12px;width:56px;"></icon>
-                <icon if="{{compValidIcon && this.compValid==='has-warning'}}" type="warning" color="warning" style="margin-right: 12px;width:56px;"></icon>
-                <icon if="{{compValidIcon && this.compValid==='has-error'}}" type="remove" color="danger" style="margin-right: 12px;width:56px;"></icon>
+                <icon if="{{stepButton}}" type="plus-sign" h-style="margin-right: 12px;width:56px;" onclick="handlePlus"></icon>
+                <icon if="{{compValidIcon && this.compValid==='has-success'}}" type="ok" color="success" h-style="margin-right: 12px;width:56px;"></icon>
+                <icon if="{{compValidIcon && this.compValid==='has-warning'}}" type="warning" color="warning" h-style="margin-right: 12px;width:56px;"></icon>
+                <icon if="{{compValidIcon && this.compValid==='has-error'}}" type="remove" color="danger" h-style="margin-right: 12px;width:56px;"></icon>
             </div>
         </div>
 
@@ -137,6 +137,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

@@ -117,6 +117,13 @@
         animation-timing-function: linear;
     }
 
+    .hwhideleft{
+        animation-name: hwhideleft;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
     .hideleft{
         animation-name: hideleft;
         animation-duration: 200ms;
@@ -133,7 +140,7 @@
         }
     }
 
-    @keyframes hideleft {
+    @keyframes hwhideleft {
         from {
             transform: translateX(-250px);
         }
@@ -142,8 +149,27 @@
         }
     }
 
-    .navright{
+    @keyframes hideleft {
+        from {
+            transform: translateX(500px);
+        }
+        to {
+            transform: translateX(-40px);
+        }
+    }
+
+    .hwnavright{
         position: fixed;
+        top: 0;
+        bottom:0;
+        left: 750px;
+        right: -500px;
+        width: 500px;
+        height:100%;
+        background-color: #ffffff;
+    }
+
+    .navright{
         top: 0;
         bottom:0;
         left: 750px;
@@ -155,6 +181,13 @@
 
     .showright{
         animation-name: showright;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhideright{
+        animation-name: hwhideright;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -176,12 +209,21 @@
         }
     }
 
-    @keyframes hideright {
+    @keyframes hwhideright {
         from {
             transform: translateX(250px);
         }
         to {
             transform: translateX(750px);
+        }
+    }
+
+    @keyframes hideright {
+        from {
+            transform: translateX(-500px);
+        }
+        to {
+            transform: translateX(40px);
         }
     }
 
@@ -197,6 +239,13 @@
 
     .show1{
         animation-name: show1;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide1{
+        animation-name: hwhide1;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -218,12 +267,21 @@
         }
     }
 
-    @keyframes hide1 {
+    @keyframes hwhide1 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(300px);
+        }
+    }
+
+    @keyframes hide1 {
+        from {
+            transform: translateY(-100px);
+        }
+        to {
+            transform: translateY(30px);
         }
     }
 
@@ -239,6 +297,13 @@
 
     .show2{
         animation-name: show2;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide2{
+        animation-name: hwhide2;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -260,12 +325,21 @@
         }
     }
 
-    @keyframes hide2 {
+    @keyframes hwhide2 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(400px);
+        }
+    }
+
+    @keyframes hide2 {
+        from {
+            transform: translateY(-200px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -281,6 +355,13 @@
 
     .show3{
         animation-name: show3;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide3{
+        animation-name: hwhide3;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -302,12 +383,21 @@
         }
     }
 
-    @keyframes hide3 {
+    @keyframes hwhide3 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(500px);
+        }
+    }
+
+    @keyframes hide3 {
+        from {
+            transform: translateY(-300px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -323,6 +413,13 @@
 
     .show4{
         animation-name: show4;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide4{
+        animation-name: hwhide4;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -344,12 +441,21 @@
         }
     }
 
-    @keyframes hide4 {
+    @keyframes hwhide4 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(600px);
+        }
+    }
+
+    @keyframes hide4 {
+        from {
+            transform: translateY(-400px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -365,6 +471,13 @@
 
     .show5{
         animation-name: show5;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide5{
+        animation-name: hwhide5;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -386,12 +499,21 @@
         }
     }
 
-    @keyframes hide5 {
+    @keyframes hwhide5 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(700px);
+        }
+    }
+
+    @keyframes hide5 {
+        from {
+            transform: translateY(-500px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -407,6 +529,13 @@
 
     .show6{
         animation-name: show6;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide6{
+        animation-name: hwhide6;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -428,12 +557,21 @@
         }
     }
 
-    @keyframes hide6 {
+    @keyframes hwhide6 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(800px);
+        }
+    }
+
+    @keyframes hide6 {
+        from {
+            transform: translateY(-600px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -449,6 +587,13 @@
 
     .show7{
         animation-name: show7;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide7{
+        animation-name: hwhide7;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -470,12 +615,21 @@
         }
     }
 
-    @keyframes hide7 {
+    @keyframes hwhide7 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(900px);
+        }
+    }
+
+    @keyframes hide7 {
+        from {
+            transform: translateY(-700px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -491,6 +645,13 @@
 
     .show8{
         animation-name: show8;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide8{
+        animation-name: hwhide8;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -512,12 +673,21 @@
         }
     }
 
-    @keyframes hide8 {
+    @keyframes hwhide8 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(1000px);
+        }
+    }
+
+    @keyframes hide8 {
+        from {
+            transform: translateY(-800px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -533,6 +703,13 @@
 
     .show9{
         animation-name: show9;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide9{
+        animation-name: hwhide9;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -554,12 +731,21 @@
         }
     }
 
-    @keyframes hide9 {
+    @keyframes hwhide9 {
         from {
             transform: translateY(0px);
         }
         to {
             transform: translateY(1100px);
+        }
+    }
+
+    @keyframes hide9 {
+        from {
+            transform: translateY(-900px);
+        }
+        to {
+            transform: translateY(40px);
         }
     }
 
@@ -575,6 +761,13 @@
 
     .show10{
         animation-name: show10;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+    }
+
+    .hwhide10{
+        animation-name: hwhide10;
         animation-duration: 200ms;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
@@ -596,7 +789,7 @@
         }
     }
 
-    @keyframes hide10 {
+    @keyframes hwhide10 {
         from {
             transform: translateY(0px);
         }
@@ -604,10 +797,20 @@
             transform: translateY(1200px);
         }
     }
+
+    @keyframes hide10 {
+        from {
+            transform: translateY(-1000px);
+        }
+        to {
+            transform: translateY(40px);
+        }
+    }
 </style>
 
 <script>
     import router from "@system.router";
+    import { loaderConfig } from '../../../utils/config'
 
     export default {
         data() {
@@ -623,10 +826,10 @@
                 var style = ''
                 switch (this.mode){
                     case 'left':
-                        style = this.isShow ? 'navleft showleft' : 'navleft hideleft'
+                        style = this.isShow ? 'navleft showleft' : 'navleft ' + ((loaderConfig.type.toUpperCase() === 'HUAWEI') ? 'hw' : '') + 'hideleft'
                         break
                     case 'right':
-                        style = this.isShow ? 'navright showright' : 'navright hideright'
+                        style = this.isShow ? ((loaderConfig.type.toUpperCase() === 'HUAWEI') ? 'hw' : '') + 'navright showright' : ((loaderConfig.type.toUpperCase() === 'HUAWEI') ? 'hw' : '') + 'navright ' + ((loaderConfig.type.toUpperCase() === 'HUAWEI') ? 'hw' : '') + 'hideright'
                         break
                     case 'bottom':
                     default:
@@ -638,7 +841,7 @@
                             len = 10
                         }
 
-                        style = this.isShow ? ('nav' + len + ' show' + len) : ('nav' + len + ' hide' + len)
+                        style = this.isShow ? ('nav' + len + ' show' + len) : ('nav' + len + ' ' + ((loaderConfig.type.toUpperCase() === 'HUAWEI') ? 'hw' : '') + 'hide' + len)
                         break
                 }
 

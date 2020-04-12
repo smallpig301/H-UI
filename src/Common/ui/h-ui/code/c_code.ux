@@ -14,16 +14,14 @@
 */
 
 <template>
-    <text class="code">{{text}}</text>
+    <text class="code {{compFont}}" style="{{hStyle}}">{{text}}</text>
 </template>
 
 <style lang="less">
-    @import '../../../styles/variables.less';
+    @import '../../../styles/font.less';
 
     .code {
         padding: @font-size-base * 0.1 @font-size-base * 0.2;
-        font-size: @font-size-base * 0.875;
-        color: @color-code;
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         background-color: @color-code-bg;
         border-radius: @font-size-base * 0.2;
@@ -32,6 +30,21 @@
 
 <script>
   export default {
-    props: ['text']
+      props: {
+          text: {
+              default: ''
+          },
+          font:{
+              default: ''
+          },
+          hStyle:{
+              default: ''
+          }
+      },
+      computed: {
+          compFont() {
+              return this.font === '' ? "danger font27" : this.font
+          }
+      }
   }
 </script>

@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="btn {{compBgColor}}" onclick="handleClick">
+    <div class="btn {{compBgColor}}" style="{{hStyle}}" onclick="handleClick">
         <div if="{{heart}}">
             <text if="{{!compClicked }}" class="icon">&#xe800;</text>
             <text if="{{compClicked}}" class="icon {{color}}">&#xe80b;</text>
@@ -74,6 +74,9 @@
           },
           bgColor: {
               default: 'bg-red'
+          },
+          hStyle:{
+              default: ''
           }
       },
 

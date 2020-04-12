@@ -15,7 +15,7 @@
 
 <import name="toast" src="../feedback/c_toast"></import>
 <template>
-    <div class="volume">
+    <div class="volume" style="{{hStyle}}">
         <text if="{{status === 'volume-up'}}" class="icon">&#xe84a;</text>
         <text if="{{status === 'volume-down'}}" class="icon">&#xe821;</text>
         <text if="{{status === 'volume-off'}}" class="icon">&#xe849;</text>
@@ -77,6 +77,7 @@
 
 <script>
     import volume from '@system.volume'
+    import { loaderConfig } from '../../../utils/config'
 
     export default {
         props: {
@@ -86,6 +87,9 @@
             },
             showToast: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 
@@ -148,50 +152,70 @@
             let _this = this
             _this[name] = evt.progress
 
-            volume.setMediaValue({
-                volume: _this.compValue/100,
-                success: function() {
-                    if(_this.showToast){
-                        if(_this.compValue === 0){
-                            _this.status = 'volume-off'
-                            _this.$child(_this.id + '_toast').showToast({
-                                text: '当前为静音',
-                                icon: 'volume-off'
-                            })
-                        }else if(_this.compValue >0 && _this.compValue < 50){
-                            _this.status = 'volume-down'
-                            _this.$child(_this.id + '_toast').showToast({
-                                text: '当前音量:' + _this.compValue + '%',
-                                icon: 'volume-down'
-                            })
-                        }else{
-                            _this.status = 'volume-up'
-                            _this.$child(_this.id + '_toast').showToast({
-                                text: '当前音量:' + _this.compValue + '%',
-                                icon: 'volume-up'
-                            })
-                        }
+            if(loaderConfig.type.toUpperCase() === 'HUAWEI'){
+                volume.setMediaValue({
+                    volume: _this.compValue/100,//
+                    success: function() {
+                        _this.doSuccess()
+                    },
+                    fail: function(data, code) {
+                        _this.$child(_this.id + '_toast').showToast({
+                            text: '设置音量失败',
+                            icon: 'warning'
+                        })
+                        console.log(`handling fail, code = ${code}`)
                     }
-
-                    if(_this.compValue === 0){
-                        _this.status = 'volume-off'
-                    }else if(_this.compValue >0 && _this.compValue < 50){
-                        _this.status = 'volume-down'
-                    }else{
-                        _this.status = 'volume-up'
+                })
+            }else {
+                volume.setMediaValue({
+                    value: _this.compValue/100,//非手机
+                    success: function() {
+                        _this.doSuccess()
+                    },
+                    fail: function(data, code) {
+                        _this.$child(_this.id + '_toast').showToast({
+                            text: '设置音量失败',
+                            icon: 'warning'
+                        })
+                        console.log(`handling fail, code = ${code}`)
                     }
+                })
+            }
+        },
 
-                    _this.$dispatch(_this.id + '_dispatchEvt', {
-                        value: _this.compValue
+        doSuccess() {
+            if(this.showToast){
+                if(this.compValue === 0){
+                    this.status = 'volume-off'
+                    this.$child(this.id + '_toast').showToast({
+                        text: '当前为静音',
+                        icon: 'volume-off'
                     })
-                },
-                fail: function(data, code) {
-                    _this.$child(_this.id + '_toast').showToast({
-                        text: '设置音量失败',
-                        icon: 'warning'
+                }else if(this.compValue >0 && this.compValue < 50){
+                    this.status = 'volume-down'
+                    this.$child(this.id + '_toast').showToast({
+                        text: '当前音量:' + this.compValue + '%',
+                        icon: 'volume-down'
                     })
-                    console.log(`handling fail, code = ${code}`)
+                }else{
+                    this.status = 'volume-up'
+                    this.$child(this.id + '_toast').showToast({
+                        text: '当前音量:' + this.compValue + '%',
+                        icon: 'volume-up'
+                    })
                 }
+            }
+
+            if(this.compValue === 0){
+                this.status = 'volume-off'
+            }else if(this.compValue >0 && this.compValue < 50){
+                this.status = 'volume-down'
+            }else{
+                this.status = 'volume-up'
+            }
+
+            this.$dispatch(this.id + '_dispatchEvt', {
+                value: this.compValue
             })
         }
     }

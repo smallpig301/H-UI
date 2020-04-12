@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div>
+    <div style="{{hStyle}}">
         <!-- 日期时间 -->
         <text class="icon {{color}}" style="{{compStyle}}" if="{{type === 'date'}}">&#xe85a;</text>
         <text class="icon {{color}}" style="{{compStyle}}" if="{{type === 'time'}}">&#xe859;</text>
@@ -442,6 +442,9 @@
             },
             opacity: {
                 default: 1
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

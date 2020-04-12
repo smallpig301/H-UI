@@ -15,7 +15,7 @@
 
 <template>
   <!-- 新闻三叶草组件 待改用list,refresh,loadmore改造 -->
-  <div class="container">
+  <div class="container" style="{{hStyle}}">
     <block for="{{data}}">
       <div class="news" onclick="showDetail($item.url)">
         <text class="news-title">{{$item.title}}</text>
@@ -81,7 +81,12 @@
   import router from '@system.router';
 
   export default {
-    props: ['data'],
+      props: {
+          data: {},
+          hStyle:{
+              default: ''
+          }
+      },
 
     showDetail: function(url) {
         //跳转相应页面

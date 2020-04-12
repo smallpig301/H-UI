@@ -18,9 +18,9 @@
 <import name="audio-player" src="..//media/c_audio_player"></import>
 <template>
     <!-- 新闻详情组件 -->
-    <div class="container">
+    <div class="container" style="{{hStyle}}">
 
-        <h4 class="news-title" text="{{title}}"></h4>
+        <h4 h-style="color: #1A1A1A;" text="{{title}}"></h4>
 
         <div>
             <text class="news-creator">{{creator}}</text>
@@ -28,7 +28,7 @@
         </div>
 
         <block for="{{data}}">
-            <p class="news-text" if="{{$item.type==='text'}}" text="{{$item.value}}"></p>
+            <p h-style="color: #000000;font-size: 35.4px;line-height: 60.4px;" if="{{$item.type==='text'}}" text="{{$item.value}}"></p>
             <image if="{{$item.type==='image'}}" src="{{$item.value}}"></image>
             <video if="{{$item.type==='video'}}" src="{{$item.value}}" poster="{{$item.poster}}"></video>
             <audio-player if="{{$item.type==='audio'}}" src="{{$item.value}}"></audio-player>
@@ -43,9 +43,6 @@
         flex-direction: column;
     }
 
-    .news-title {
-        color: #1A1A1A;
-    }
     .news-creator {
         font-size: 25px;
         color: #BABABA;
@@ -57,11 +54,6 @@
         color: #a2a2a2;
         margin-bottom: 20px;
     }
-    .news-text {
-        color: #000000;
-        font-size: 35.4px;
-        line-height: 60.4px;
-    }
     video {
         height:384px;
     }
@@ -69,6 +61,14 @@
 
 <script>
   export default {
-    props: ['title','creator','creationTime','data'],
+    props: {
+        title: {},
+        creator: {},
+        creationTime: {},
+        data: {},
+        hStyle:{
+            default: ''
+        }
+    }
   }
 </script>

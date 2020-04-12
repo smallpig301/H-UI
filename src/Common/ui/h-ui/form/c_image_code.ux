@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="canvas-container">
+    <div class="canvas-container" style="{{hStyle}}">
         <canvas id="{{id}}" onclick="handleClick"></canvas>
     </div>
 </template>
@@ -40,11 +40,16 @@
             data: {},
             color: {
                 default: ''
+            },
+            hStyle:{
+                default: ''
             }
         },
 
-        onReady() {
-            this.drawChart()
+        onInit(){
+            setTimeout(() => {
+                this.drawChart()
+            }, 100);
         },
 
         drawChart(){

@@ -14,17 +14,15 @@
 */
 
 <template>
-    <textarea class="pre" disabled="{{!edit}}">{{codes}}</textarea>
+    <textarea class="pre {{compFont}}" style="{{hStyle}}" disabled="{{!edit}}">{{codes}}</textarea>
 </template>
 
 <style lang="less">
-    @import '../../../styles/variables.less';
+    @import '../../../styles/font.less';
 
     .pre {
         padding: 30px 30px;
         width:100%;
-        font-size: @font-size-base;
-        color:@color-success;
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         background-color: @color-dark;
     }
@@ -38,6 +36,17 @@
           },
           edit: {
               default: false
+          },
+          font:{
+              default: ''
+          },
+          hStyle:{
+              default: ''
+          }
+      },
+      computed: {
+          compFont() {
+              return this.font === '' ? "success font30" : this.font
           }
       }
   }

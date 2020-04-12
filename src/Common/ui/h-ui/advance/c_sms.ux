@@ -15,12 +15,12 @@
 
 <import name="message" src="../feedback/c_message"></import>
 <import name="mobile" src="../form/c_mobile"></import>
-<import name="button" src="../basic/c_button"></import>
+<import name="h-button" src="../basic/c_button"></import>
 <template>
-    <div class="sms">
-        <mobile id="address" title="目标号码" placeholder="请输入短信接收人号码" value="{{params.address}}" params="{{params}}"></mobile>
-        <textarea class="sms-content" placeholder="{{contentPlaceholder}}" maxlength="70" onchange="handleChange">{{data.content}}</textarea>
-        <button id="btn" text="发送短信" type="{{type}}" block="true" onclick="handleSend"></button>
+    <div class="sms" style="{{hStyle}}">
+        <mobile id="address" title="目标号码" placeholder="请输入短信接收人号码" value="{{address}}" params="{{params}}"></mobile>
+        <textarea class="sms-content" placeholder="{{contentPlaceholder}}" maxlength="70" onchange="handleChange">{{content}}</textarea>
+        <h-button id="btn" text="发送短信" type="{{type}}" block="true" onclick="handleSend"></h-button>
         <message id="message"></message>
     </div>
 </template>
@@ -54,20 +54,27 @@
             },
             contentPlaceholder: {
                 default: '短信内容'
+            },
+            hStyle:{
+                default: ''
             }
         },
 
         data: {
             params: {},
-            content: ''
+            content: '',
+            address: ''
         },
 
         onInit(){
-            this.params.address = !!this.data.address ? this.data.address : ''
+            this.address = !!this.data.address ? this.data.address : ''
+            this.content = !!this.data.content ? this.data.content : ''
 
-            if(!!this.data.content) {
-                this.content = this.data.content
-            }
+            this.$on('address_dispatchEvt',this.dispatchEvt)
+        },
+
+        dispatchEvt(evt) {
+            this.address = evt.detail.value
         },
 
         handleChange(e){
@@ -76,7 +83,7 @@
         handleSend(){
             let _this = this
             sms.send({
-                address: _this.params.address,
+                address: _this.address,
                 content: _this.content,
                 success: function () {
                     _this.$child('message').showMessage({

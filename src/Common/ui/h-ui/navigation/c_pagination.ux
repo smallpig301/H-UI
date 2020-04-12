@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="pagination">
+    <div class="pagination" style="{{hStyle}}">
         <div class="pagination-button {{current === 1 ? 'pagination-button-disabled' : ''}}" onclick="handlePrev">
             <text show = "{{mode !== '2'}}" class="icon {{current === 1 ? 'pagination-text-disabled' : ''}}">&#xe6f4; </text>
             <text show = "{{mode !== '3'}}" class="{{current === 1 ? 'pagination-text-disabled' : ''}}">{{prevText}}</text>
@@ -94,6 +94,9 @@
             },
             mode: {
                 default: '1' //模式1：显示头标加文字；模式2：仅显示文字；模式3：仅显示头标；
+            },
+            hStyle:{
+                default: ''
             }
         },
 

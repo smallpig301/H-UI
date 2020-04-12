@@ -24,7 +24,7 @@
                     <icon type="user" size="70" color="white"></icon>
                 </div>
 
-                <avatar if="{{compAvatar !== ''}}" src="{{compAvatar}}" size="90" class="card-left-avatar"></avatar>
+                <avatar if="{{compAvatar !== ''}}" src="{{compAvatar}}" size="90" h-style="margin-top:25px;margin-bottom:25px;"></avatar>
             </div>
 
 
@@ -75,9 +75,6 @@
                 border-radius: 45px;
                 align-items: center;
                 justify-content: center;
-                margin: 25px 0;
-            }
-            &-avatar{
                 margin: 25px 0;
             }
         }

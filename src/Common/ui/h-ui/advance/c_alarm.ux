@@ -18,14 +18,14 @@
 <import name="h-input" src="../form/c_input"></import>
 <import name="h-switch" src="../form/c_switch"></import>
 <import name="h-select" src="../form/c_select"></import>
-<import name="button" src="../basic/c_button"></import>
+<import name="h-button" src="../basic/c_button"></import>
 <template>
-    <div class="alarm">
+    <div class="alarm" style="{{hStyle}}">
         <h-input id="title" params="{{params}}" value="{{data.title}}" title="闹钟名" type-icon="bell" form-horizontal="true" placeholder="请设置闹钟名称" maxlength="10" valid="none"></h-input>
         <time id="time" form-horizontal="true" params="{{params}}" value="{{params.time}}" not-blank="false" valid="none"></time>
         <h-switch id="vibrate" params="{{params}}" active="{{params.vibrate}}" form-horizontal="true" active-type="{{type}}" title="震动" inactive-text="关" active-text="开" not-blank="false" valid="none"></h-switch>
         <h-select id="repeat" params="{{params}}" value="{{params.repeat}}" title="重复周期" data="{{options}}" form-horizontal="true" not-blank="false" valid="none"></h-select>
-        <button id="btn" text="设置闹钟" type="{{type}}" block="true" onclick="handleClick"></button>
+        <h-button id="btn" text="设置闹钟" type="{{type}}" block="true" onclick="handleClick"></h-button>
         <message id="message"></message>
     </div>
 </template>
@@ -48,6 +48,9 @@
             data: {},
             type: {
                 default: 'primary'
+            },
+            hStyle:{
+                default: ''
             }
         },
 
@@ -67,9 +70,9 @@
             }else {
                 var date = new Date()
                 date.setTime(date.setMinutes(date.getMinutes() + 5));
-                this.hour = date.getHours()
-                this.minute = date.getMinutes()
-                this.params.time = fill2(this.hour.toString()) + ':' + fill2(this.minute.toString())
+                var hour = date.getHours()
+                var minute = date.getMinutes()
+                this.params.time = fill2(hour.toString()) + ':' + fill2(minute.toString())
             }
             this.params.vibrate = this.data.vibrate !== undefined ? this.data.vibrate : true //是否震动
             this.params.repeat = !!this.data.repeat ? this.data.repeat : 'once'

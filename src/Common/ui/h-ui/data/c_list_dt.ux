@@ -13,22 +13,33 @@
 *
 */
 
+<import name="flex-col" src="../basic/c_flex_col"></import>
+<import name="b" src="../text/c_tag_b"></import>
 <template>
-    <text class="dt">{{text}}</text>
+    <flex-col width="{{width}}" justify="{{width < 12 ? 'right' : ''}}" h-style="{{hStyle}}">
+        <b text="{{text}}" font="{{font}}"></b>
+    </flex-col>
 </template>
 
 <style lang="less">
-    .dt{
-        font-weight: bolder;
-    }
-    .dl-horizontal > .dt{
-        width: 30%;
-        text-align: right;
-    }
+    @import '../../../styles/font.less';
 </style>
 
 <script>
     export default {
-        props: ['text']
+        props: {
+            text: {
+                default: ''
+            },
+            width: {
+                default: 12
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
     }
 </script>

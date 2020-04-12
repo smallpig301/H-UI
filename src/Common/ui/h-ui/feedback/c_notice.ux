@@ -15,7 +15,7 @@
 
 <template>
     <div>
-        <div if="{{compShow}}" class="notice">
+        <div if="{{compShow}}" class="notice" style="{{hStyle}}">
             <div if="{{close}}" class="notice-close">
                 <text onclick="handleClose" class="notice-close-icon">&#xe706;</text>
             </div>
@@ -28,7 +28,7 @@
                 <text if="{{!marquee && more && !compMulti}}" class="notice-content-down" onclick="handleMore">&#xe70b;</text>
 
                 <text if="{{marquee && icon}}" class="notice-content-icon" onclick="handleMore">&#xe84a;</text>
-                <marquee if="{{marquee}}" scrollamount="12px" class="notice-content-text">{{text}}</marquee>
+                <marquee if="{{marquee}}" class="notice-content-text">{{text}}</marquee>
             </div>
         </div>
     </div>
@@ -98,6 +98,9 @@
           },
           close:{
               default: false
+          },
+          hStyle:{
+              default: ''
           }
       },
       data() {

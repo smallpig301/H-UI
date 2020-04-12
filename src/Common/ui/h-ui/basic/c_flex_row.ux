@@ -14,10 +14,14 @@
 */
 
 <template>
-    <div style="{{compStyle}}">
+    <div class="{{bgColor}}" style="{{compStyle}}{{hStyle}}">
         <slot></slot>
     </div>
 </template>
+
+<style lang="less">
+    @import '../../../styles/bg-color.less';
+</style>
 
 <script>
     export default {
@@ -33,6 +37,12 @@
             },
             align: {
                 default: 'stretch'     //项目在交叉轴上如何对齐。支持：stretch(默认),top,middle,bottom,baseline
+            },
+            bgColor: {
+                default: ''
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

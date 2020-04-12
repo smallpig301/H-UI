@@ -15,7 +15,7 @@
 
 <import name="toast" src="../feedback/c_toast"></import>
 <template>
-    <div>
+    <div style="{{hStyle}}">
         <text if="{{status === 'battery-high'}}" class="icon">&#xe7d4;</text>
         <text if="{{status === 'battery-normal'}}" class="icon">&#xe7d3;</text>
         <text if="{{status === 'battery-low'}}" class="icon warning">&#xe7d3;</text>
@@ -52,6 +52,9 @@
             id: {},
             showToast: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 

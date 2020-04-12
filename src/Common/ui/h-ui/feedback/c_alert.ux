@@ -18,49 +18,19 @@
 <import name="icon" src="../basic/c_icon"></import>
 <import name="small" src="../text/c_tag_small"></import>
 <template>
-    <flex-row class="{{compStyle}}">
-        <flex-col if="{{isShow}}" width="11" class="alert-content" style="flex-direction: column;">
+    <flex-row h-style="margin-bottom: 20px;{{compStyle}}{{hStyle}}">
+        <flex-col if="{{isShow}}" width="11" h-style="flex-direction:column;padding:20px;">
             <div>
-                <icon  type="{{compIconType}}" color="white" class="type-icon"></icon>
-                <text class="white">{{title}}</text>
+                <icon  type="{{compIconType}}" color="white" h-style="margin-right: 10px;"></icon>
+                <text style="color:#ffffff;">{{title}}</text>
             </div>
-            <small if="{{!!content}}" text="{{content}}" class="white"></small>
+            <small if="{{!!content}}" text="{{content}}" font="white"></small>
         </flex-col>
         <flex-col if="{{isShow}}" width="1">
             <icon if="{{remove}}" type="remove" color="white" onclick="handleClick"></icon>
         </flex-col>
     </flex-row>
 </template>
-
-<style lang="less">
-    @import '../../../styles/variables.less';
-
-    .white{
-        color:#ffffff;
-    }
-    .type-icon{
-        margin-right: 10px;
-    }
-    .alert-content{
-        padding:20px;
-    }
-    .bg-info{
-        background-color: @color-info;
-        margin-bottom: 20px;
-    }
-    .bg-warning{
-        background-color: @color-warning;
-        margin-bottom: 20px;
-    }
-    .bg-danger{
-        background-color: @color-danger;
-        margin-bottom: 20px;
-    }
-    .bg-success{
-        background-color: @color-success;
-        margin-bottom: 20px;
-    }
-</style>
 
 <script>
   export default {
@@ -72,6 +42,9 @@
           content: {},
           remove:{
               default: false
+          },
+          hStyle:{
+              default: ''
           }
       },
       data() {
@@ -109,7 +82,22 @@
               return icon
           },
           compStyle() {
-              return 'bg-' + this.compType
+              var style = ''
+              switch (this.type){
+                  case 'warning':
+                      style = 'background-color: #e6a23c;'
+                      break
+                  case 'danger':
+                      style = 'background-color: #f56c6c;'
+                      break
+                  case 'success':
+                      style = 'background-color: #67c23a;'
+                      break
+                  default:
+                      style = 'background-color: #5bc0de;'
+                      break
+              }
+              return style
           }
       },
       handleClick(){

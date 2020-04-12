@@ -14,7 +14,7 @@
 */
 
 <template>
-    <swiper autoplay="{{autoplay}}" loop="{{loop}}" vertical="{{vertical}}" indicator="{{indicator}}" style="{{compStyle}}">
+    <swiper autoplay="{{autoplay}}" loop="{{loop}}" vertical="{{vertical}}" indicator="{{indicator}}" style="{{compStyle}}{{hStyle}}">
         <block for="{{data}}">
             <stack>
                 <image class="fullsize" src="{{$item.pic}}"></image>
@@ -25,7 +25,7 @@
                         <text>{{$item.footword}}</text>
                     </div>
                 </div>
-                <div class="fullsize" onclick="showDetail($item.url)"></div>
+                <div class="fullsize" onclick="showDetail($item.uri)"></div>
             </stack>
         </block>
     </swiper>
@@ -91,6 +91,9 @@
             },
             indicatorSelectedColor: {
                 default: '#33b4ff'
+            },
+            hStyle:{
+                default: ''
             }
         },
 
@@ -99,7 +102,7 @@
                 return this.fullWidth ? 'width:100%;' : 'width:'+this.width+'px;';
             },
             compHeight() {
-                return this.fullHeight ? 'height:' + (this.$page. windowHeight + 80) + ';' : 'height:'+this.height+'px;margin-bottom: 28px;margin-top: 8.9px;';
+                return this.fullHeight ? 'height:' + this.$page. windowHeight + ';' : 'height:'+this.height+'px;margin-bottom: 28px;margin-top: 8.9px;';
             },
             compIndicatorSelectedColor() {
                 return 'indicator-selected-color:' + this.indicatorSelectedColor +';';
@@ -110,10 +113,10 @@
         },
 
 
-        showDetail: function(url) {
+        showDetail: function(uri) {
             //跳转相应页面
             router.push({
-                uri: url
+                uri: uri
             });
         }
     }

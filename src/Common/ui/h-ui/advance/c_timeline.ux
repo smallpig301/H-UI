@@ -19,7 +19,7 @@
 <import name="b" src="../text/c_tag_b"></import>
 <import name="small" src="../text/c_tag_small"></import>
 <template>
-    <flex-row wrap="wrap" align="top">
+    <flex-row wrap="wrap" align="top" h-style="{{hStyle}}">
         <block for="item in compData">
             <flex-col width="1" class="icon">
                 <icon type="{{item.type}}" color="{{item.color}}" size="40"></icon>
@@ -51,6 +51,9 @@
             data: {},
             current: {
                 default: 999
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

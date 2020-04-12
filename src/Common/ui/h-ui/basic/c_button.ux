@@ -15,7 +15,7 @@
 
 <import name="icon" src="./c_icon"></import>
 <template>
-    <div>
+    <div style="{{hStyle}}">
         <div if="{{!icon}}" style="{{compBlock}}">
             <input id="{{id}}" class="btn {{compStyle}}" style="{{compRadius}}" type="button" value="{{text}}" @click="clicked"></input>
         </div>
@@ -109,7 +109,10 @@
             circle: {
                 default: false
             },
-            url: {
+            uri: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },
@@ -169,9 +172,9 @@
             // 手机震动反馈
             vibrator.vibrate({ mode: "short" })
 
-            if(this.url !== ''){
+            if(this.uri !== ''){
                 router.push({
-                    uri: this.url
+                    uri: this.uri
                 });
             }else {
                 this.$dispatch(this.id + '_dispatchEvt', {

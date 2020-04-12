@@ -24,8 +24,8 @@
         <div if="{{isShow}}" class="mask" style="{{maskHeight}}">
             <div class="mask-top {{bgColor}}">
                 <div>
-                    <pickimage id="pick" size="85" color="white" class="pick"></pickimage>
-                    <takephoto id="takephoto" size="75" color="white" class="pick"></takephoto>
+                    <pickimage id="pick" size="85" color="white" h-style="padding:10px;"></pickimage>
+                    <takephoto id="takephoto" size="75" color="white" h-style="padding:10px;"></takephoto>
                 </div>
                 <div>
                     <text id="editImage" class="icon icon-tool white" onclick="handleEditImage">&#xe7c7;</text>
@@ -141,10 +141,6 @@
         &-tool{
             font-size: 55px;
         }
-    }
-
-    .pick{
-        padding: 10px;
     }
 
     image {

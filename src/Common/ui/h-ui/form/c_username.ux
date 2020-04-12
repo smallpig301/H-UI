@@ -20,7 +20,7 @@
               placeholder="{{compPlaceholder}}" value="{{value}}" align-right="{{alignRight}}" tip="{{tip}}" 
               valid="{{valid}}" valid-icon="{{compValidIcon}}" not-blank="{{compNotBlank}}" disabled="{{disabled}}"
               pattern="^[a-zA-Z]\w{2,63}$"
-              form-error="{{formError}}">
+              form-error="{{formError}}" h-style="{{hStyle}}">
     </h-input>
 </template>
 
@@ -70,6 +70,9 @@
             },
             disabled:{
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

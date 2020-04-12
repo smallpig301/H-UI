@@ -14,8 +14,8 @@
 */
 
 <template>
-    <div class="blockquote {{pullTo}}">
-        <text class="{{textAlign}} {{styles}}">{{text}}</text>
+    <div class="blockquote {{pullTo}}" style="{{hStyle}}">
+        <text class="{{textAlign}} {{font}}">{{text}}</text>
         <text if="{{source}}" class="muted small i {{textAlign}}">
             <span if="{{textAlign === 'left'}}">-- </span>
             <span>{{source}}</span>
@@ -44,7 +44,7 @@
 
 <script>
     export default {
-        props: ['text', 'styles', 'source', 'pullRight'],
+        props: ['text', 'font', 'hStyle', 'source', 'pullRight'],
         computed: {
             pullTo() {
                 return this.pullRight==="true" ? "blockquote-pull-right" : "blockquote-pull-left";

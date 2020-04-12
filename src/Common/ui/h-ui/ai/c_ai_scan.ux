@@ -30,8 +30,8 @@
         <div if="{{isShow}}" class="mask" style="{{maskHeight}}">
             <div class="mask-top {{bgColor}}">
                 <div>
-                    <pickimage id="pick" size="85" color="white" class="pick"></pickimage>
-                    <takephoto id="takephoto" size="75" color="white" class="pick"></takephoto>
+                    <pickimage id="pick" size="85" color="white" h-style="padding:10px;"></pickimage>
+                    <takephoto id="takephoto" size="75" color="white" h-style="padding:10px;"></takephoto>
                 </div>
                 <div>
                     <text class="white">扫一扫</text>
@@ -44,11 +44,11 @@
 
             <div class="mask-panel">
                 <div class="mask-panel-item" if="{{barCodeType === 0}}">
-                    <h5 class="mask-panel-item-title" text="未知码类型"></h5>
+                    <h5 h-style="margin-bottom:50px;flex-direction:column;" text="未知码类型"></h5>
                 </div>
 
                 <div class="mask-panel-item" if="{{barCodeType === 1}}">
-                    <h5 class="mask-panel-item-title" text="{{barCodeMemo}}"></h5>
+                    <h5 h-style="margin-bottom:50px;flex-direction:column;" text="{{barCodeMemo}}"></h5>
                     <div class="mask-panel-item-btn">
                         <text class="icon icon-tool white">&#xe810;</text>
                         <a href="tel:{{barCodeData.number}}" class="white">立即拨打</a>
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="mask-panel-item" if="{{barCodeType === 3}}">
-                    <h5 class="mask-panel-item-title" text="{{barCodeMemo}}"></h5>
+                    <h5 h-style="margin-bottom:50px;flex-direction:column;" text="{{barCodeMemo}}"></h5>
                     <div class="mask-panel-item-btn">
                         <text class="icon icon-tool white">&#xe805;</text>
                         <a href="{{barCodeData.uri}}" class="white">立即访问</a>
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="mask-panel-item" if="{{barCodeType === 4}}">
-                    <h5 class="mask-panel-item-title" text="{{barCodeMemo}}"></h5>
+                    <h5 h-style="margin-bottom:50px;flex-direction:column;" text="{{barCodeMemo}}"></h5>
                     <div class="mask-panel-item-btn">
                         <text class="icon icon-tool white">&#xe812;</text>
                         <a href="mailto:{{barCodeData.address}}" class="white">发一封邮件</a>
@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="mask-panel-container mask-panel-container-calendar" if="{{barCodeType === 7}}">
-                    <calendar data="{{barCodeData}}" type="success" simple="true"></calendar>
+                    <calendar data="{{barCodeData}}" params="{{params}}" type="success" simple="true"></calendar>
                 </div>
 
                 <div class="mask-panel-item" if="{{barCodeType === 8}}">
@@ -117,16 +117,16 @@
                 </div>
 
                 <div class="mask-panel-item" if="{{barCodeType === 9}}">
-                    <h5 class="mask-panel-item-title" text="{{barCodeMemo}}"></h5>
+                    <h5 h-style="margin-bottom:50px;flex-direction:column;" text="{{barCodeMemo}}"></h5>
                 </div>
 
 
                 <div class="mask-panel-item" if="{{barCodeType === 10 && !showDetail}}">
-                    <h5 class="mask-panel-item-title" text="{{barCodeMemo}}"></h5>
+                    <h5 h-style="margin-bottom:50px;flex-direction:column;" text="{{barCodeMemo}}"></h5>
                 </div>
 
                 <div class="mask-panel-item" if="{{barCodeType === 11 && !showDetail}}">
-                    <h5 class="mask-panel-item-title" text="{{barCodeMemo}}"></h5>
+                    <h5 h-style="margin-bottom:50px;flex-direction:column;" text="{{barCodeMemo}}"></h5>
                 </div>
 
                 <div class="mask-panel" style="background-color: #ffffff;" if="{{(barCodeType === 10 ||  barCodeType === 11) && showDetail}}">
@@ -205,10 +205,6 @@
                 border-width: 2px;
                 border-radius: 8px;
                 border-color: @color-border;
-                &-title{
-                    margin-bottom: 50px;
-                    flex-direction: column;
-                }
                 &-btn {
                     width: 550px;
                     height: 86px;
@@ -224,6 +220,10 @@
                     & a{
                         font-size: 40px;
                     }
+                }
+                &-title{
+                    margin-bottom:50px;
+                    flex-direction:column;
                 }
             }
             &-container{
@@ -263,10 +263,6 @@
         &-tool{
             font-size: 55px;
         }
-    }
-
-    .pick{
-        padding: 10px;
     }
 
     image {
@@ -338,7 +334,8 @@
                 barCodeType: 0,
                 barCodeMemo: '',
                 segment: ['基本信息', '简介'],
-                showDetail: false
+                showDetail: false,
+                params: {}
             }
         },
 

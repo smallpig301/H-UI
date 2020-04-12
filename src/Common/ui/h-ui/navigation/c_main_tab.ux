@@ -17,7 +17,7 @@
 <import name="avatar" src="../advance/c_avatar"></import>
 <template>
     <tabs onchange="onChangeTabIndex" index="{{current}}">
-        <tab-content>
+        <tab-content style="{{compStyle}}">
             <slot></slot>
         </tab-content>
 
@@ -61,6 +61,8 @@
 </style>
 
 <script>
+    import { loaderConfig } from '../../../utils/config'
+
     export default {
         props: {
             data: {
@@ -101,11 +103,14 @@
             },
             compHeight() {
                 return 'height: ' + (Number(this.size) + 65) + 'px;'
+            },
+            compStyle() {//修复快应用联盟加载器错误
+                return (loaderConfig.type.toUpperCase() === 'HUAWEI') ? '' : 'padding-left:33px;'
             }
         },
 
         onChangeTabIndex(evt) {
-            this.current = evt.index
+            this.current = evt.index;
             this.$dispatch('mainTab_dispatchEvt', {
                 value: evt.index
             })

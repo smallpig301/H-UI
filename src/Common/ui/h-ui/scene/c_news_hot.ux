@@ -16,10 +16,10 @@
 <import name="tags" src="../text/c_tags"></import>
 <import name="h5" src="../text/c_h5"></import>
 <template>
-    <div class="news">
+    <div class="news" style="{{hStyle}}">
         <image class="news-image" src="{{data.pic}}"></image>
         <div class="news-hot">
-            <h5 class="news-hot-title" text="{{data.title}}"></h5>
+            <h5 h-style="margin-top:30px;margin-bottom:10px;color:#1a1a1a;" text="{{data.title}}"></h5>
             <text class="news-hot-memo">{{data.memo}}</text>
             <tags data="{{data.tags}}"></tags>
         </div>
@@ -40,10 +40,6 @@
             margin-right: 33px;
             width: 684px;
             flex-direction: column;
-            &-title{
-                margin: 30px 0 10px 0;
-                color: #1a1a1a;
-            }
             &-memo{
                 font-size: 28px;
                 line-height: 50px;
@@ -55,7 +51,10 @@
 <script>
     export default {
         props: {
-            data: {}
+            data: {},
+            hStyle:{
+                default: ''
+            }
         }
     }
 </script>

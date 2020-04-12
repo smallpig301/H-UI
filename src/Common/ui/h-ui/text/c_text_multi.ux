@@ -14,16 +14,31 @@
 */
 
 <template>
-    <text style="{{compStyle}}">{{text}}</text>
+    <text class="{{font}}" style="{{compStyle}}{{hStyle}}">{{text}}</text>
 </template>
 
+<style lang="less">
+    @import '../../../styles/font.less';
+</style>
+
 <script>
-  export default {
-    props: ['text', 'lines'],
-    computed:{
-        compStyle() {
-            return this.lines ? 'lines:'+this.lines+';text-overflow: ellipsis;' : ''
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            lines: {},
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        },
+        computed:{
+            compStyle() {
+                return this.lines ? 'lines:'+this.lines+';text-overflow: ellipsis;' : ''
+            }
         }
     }
-  }
 </script>

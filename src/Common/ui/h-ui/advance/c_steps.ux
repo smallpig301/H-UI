@@ -19,14 +19,14 @@
 <import name="b" src="../text/c_tag_b"></import>
 <import name="small" src="../text/c_tag_small"></import>
 <template>
-    <flex-row wrap="wrap" align="top">
+    <flex-row wrap="wrap" align="top" h-style="{{hStyle}}">
         <stack class="center">
             <div class="background" style="{{compBgWidth}}"></div>
             <div>
                 <block for="item in compData">
-                    <flex-col width="{{compColWidth}}" class="center">
+                    <flex-col width="{{compColWidth}}" justify="center">
                         <div class="icon-bg" style="{{item.bgColor}}">
-                            <b if="{{item.type === ''}}" text="{{item.sort}}" class="white"></b>
+                            <b if="{{item.type === ''}}" text="{{item.sort}}" font="white"></b>
                             <icon if="{{item.type !== ''}}" type="{{item.type}}" color="white"></icon>
                         </div>
                     </flex-col>
@@ -35,14 +35,14 @@
         </stack>
 
         <block for="item in compData">
-            <flex-col width="{{compColWidth}}" class="center">
+            <flex-col width="{{compColWidth}}" justify="center">
                 <b text="{{item.title}}"></b>
             </flex-col>
         </block>
 
         <block for="item in compData">
-            <flex-col width="{{compColWidth}}" class="center">
-                <small text="{{item.content}}" class="sub"></small>
+            <flex-col width="{{compColWidth}}" justify="center">
+                <small text="{{item.content}}" font="sub"></small>
             </flex-col>
         </block>
     </flex-row>
@@ -85,6 +85,9 @@
             },
             status: {
                 default: 'pending'
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

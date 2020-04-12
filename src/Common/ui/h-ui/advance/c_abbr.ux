@@ -14,12 +14,14 @@
 */
 
 <template>
-    <text class="abbr" onlongpress="longpress">{{text}}</text>
+    <text class="abbr {{font}}" style="{{hStyle}}" onlongpress="longpress">{{text}}</text>
 </template>
 
 <style lang="less">
+    @import '../../../styles/font.less';
+
     .abbr{
-        border-bottom: 1px dotted #666666;
+        border-bottom: 1px dashed #666666;
     }
 </style>
 
@@ -27,7 +29,16 @@
     import prompt from '@system.prompt'
     import vibrator from '@system.vibrator'
     export default {
-        props: ['text', 'title'],
+        props: {
+            text: {},
+            title: {},
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        },
 
         // 手指长按屏幕
         longpress() {

@@ -15,7 +15,7 @@
 
 <import name="image-code" src="./c_image_code"></import>
 <template>
-    <div class="form-group">
+    <div class="form-group" style="{{hStyle}}">
         <div show="{{showTip}}" style="align-items: flex-start;">
             <text class="icon warning" style="margin-top: 6px;">&#xe7b1;</text>
             <text class="sub small">{{tip}}</text>
@@ -33,12 +33,12 @@
             
             <div class="{{borderType}}" style="{{formHorizontalType==='form-group-horizontal' ? 'width:65%;' : ''}}">
                 <text if="{{title==='none'}}" class="red" style="width: 40px;"> * </text>
-                <image-code if="{{alignRight}}" id="{{id + '_vcode'}}" style="margin-left: 12px;margin-top: 7px;width:300px;"></image-code>
+                <image-code if="{{alignRight}}" id="{{id + '_vcode'}}" h-style="margin-left: 12px;margin-top: 7px;width:300px;"></image-code>
                 <input id="{{id}}" name="{{name}}" class="{{alignRight === 'true' ? 'form-group-control-right': ''}}"
                         maxlength="6" placeholder="{{compPlaceholder}}" value="{{compValue}}" style="{{formControlType}}"
                         onchange="handleChange" onfocus="handleFocus" onblur="handleBlur">
                 </input>
-                <image-code if="{{!alignRight}}" id="{{id + '_vcode'}}" style="margin-right: 12px;margin-top: 7px;width:300px;"></image-code>
+                <image-code if="{{!alignRight}}" id="{{id + '_vcode'}}" h-style="margin-right: 12px;margin-top: 7px;width:300px;"></image-code>
                 <text if="{{compValidIcon && this.compValid==='has-success'}}" class="icon success" style="margin-right: 12px;width:56px;">&#xe709;</text>
                 <text if="{{compValidIcon && this.compValid==='has-warning'}}" class="icon warning" style="margin-right: 12px;width:56px;">&#xe727;</text>
                 <text if="{{compValidIcon && this.compValid==='has-error'}}" class="icon danger" style="margin-right: 12px;width:56px;">&#xe706;</text>
@@ -123,6 +123,9 @@
                 default: false
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

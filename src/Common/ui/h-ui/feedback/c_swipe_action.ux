@@ -15,7 +15,7 @@
 
 <import name="swipe-action-item" src="./c_swipe_action_item"></import>
 <template>
-    <div class="swipe">
+    <div class="swipe" style="{{hStyle}}">
         <div class="swipe-slot">
             <slot name="top"></slot>
         </div>
@@ -48,7 +48,10 @@
     export default {
         props: {
             id:{},
-            data: {}
+            data: {},
+            hStyle:{
+                default: ''
+            }
         },
 
         data() {

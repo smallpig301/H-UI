@@ -13,34 +13,25 @@
 *
 */
 
-<import name="dt" src="./c_list_dt"></import>
-<import name="dd" src="./c_list_dd"></import>
+<import name="flex-row" src="../basic/c_flex_row"></import>
+<import name="flex-col" src="../basic/c_flex_col"></import>
+<import name="b" src="../text/c_tag_b"></import>
 <template>
-    <div class="dl-container">
+    <flex-row wrap="wrap" style="{{hStyle}}">
         <block for="{{data}}">
-            <div class="{{containerType}}">
-                <block if="{{inline}}">
-                    <dt text="{{$item.dt}}" class="right"></dt>
-                </block>
-
-                <block if="{{!inline}}">
-                    <dt text="{{$item.dt}}"></dt>
-                </block>
-
-                <dd text="{{$item.dd}}"></dd>
-            </div>
+            <flex-col width="{{inline ? 4 : 12}}" justify="{{inline ? 'right' : ''}}">
+                <b text="{{$item.dt}}" font="{{dtFont}}"></b>
+            </flex-col>
+            <flex-col width="{{inline ? 8 : 12}}" h-style="{{inline ? 'padding-left:6px;' : ''}}">
+                <text class="{{ddFont}}">{{$item.dd}}</text>
+            </flex-col>
         </block>
         <slot></slot>
-    </div>
+    </flex-row>
 </template>
 
 <style lang="less">
-    .dl-container{
-        flex-direction: column;
-    }
-    .right {
-        text-align: right;
-    }
+    @import '../../../styles/font.less';
 </style>
 
 <script>
@@ -50,11 +41,15 @@
         },
         inline: {
             default: false
-        }
-    },
-    computed: {
-        containerType() {
-            return this.inline ? "dl-horizontal" : "dl-container"
+        },
+        dtFont: {
+            default: ''
+        },
+        ddFont: {
+            default: ''
+        },
+        hStyle:{
+            default: ''
         }
     }
   }

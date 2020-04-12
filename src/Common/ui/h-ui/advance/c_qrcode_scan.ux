@@ -15,7 +15,7 @@
 
 <import name="icon" src="../basic/c_icon"></import>
 <template>
-    <icon type="qr-scanner" color="{{color}}" size="{{size}}" @click="handleClick"></icon>
+    <icon type="qr-scanner" color="{{color}}" size="{{size}}" h-style="{{hStyle}}" @click="handleClick"></icon>
 </template>
 
 <script>
@@ -29,6 +29,9 @@
             },
             size: {
                 default: 60
+            },
+            hStyle:{
+                default: ''
             }
         },
         handleClick() {

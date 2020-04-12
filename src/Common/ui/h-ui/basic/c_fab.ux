@@ -17,7 +17,7 @@
 <import name="flex-row" src="./c_flex_row"></import>
 <import name="flex-col" src="./c_flex_col"></import>
 <template>
-    <div>
+    <div style="{{hStyle}}">
         <div show="{{!showPanel}}" class="fab fab-main" style="{{mainMenuStyle}}" ontouchmove="handleTouchMove">
             <div class="icon icon-lg {{bgColor}}" onclick="handleChangeHide">
                 <icon type="{{icon}}" size="90" color="white"></icon>
@@ -26,12 +26,12 @@
 
         <div show="{{showPanel}}" class="fab fab-panel">
             <flex-row>
-                <flex-col width="4" class="right">
+                <flex-col width="4" justify="right">
                     <div if="{{icon0 !== undefined}}" class="icon icon-sm {{bgColor}}" onclick="handleClick(icon0)">
                         <icon type="{{icon0.icon}}" size="70" color="white"></icon>
                     </div>
                 </flex-col>
-                <flex-col width="4" class="center">
+                <flex-col width="4" justify="center">
                     <div if="{{icon1 !== undefined}}" class="icon icon-sm {{bgColor}}" onclick="handleClick(icon1)">
                         <icon type="{{icon1.icon}}" size="70" color="white"></icon>
                     </div>
@@ -45,17 +45,17 @@
 
 
             <flex-row>
-                <flex-col width="4" class="middle right">
+                <flex-col width="4" justify="right" align="middle" h-style="height: 228px;">
                     <div if="{{icon3 !== undefined}}" class="icon icon-sm {{bgColor}}" onclick="handleClick(icon3)">
                         <icon type="{{icon3.icon}}" size="70" color="white"></icon>
                     </div>
                 </flex-col>
-                <flex-col width="4" class="middle center">
+                <flex-col width="4" justify="center" align="middle" h-style="height: 228px;">
                     <div class="icon icon-lg {{bgColor}}" onclick="handleChangeHide">
                         <icon type="remove" size="110" color="white"></icon>
                     </div>
                 </flex-col>
-                <flex-col width="4" class="middle">
+                <flex-col width="4" align="middle" h-style="height: 228px;">
                     <div if="{{icon4 !== undefined}}" class="icon icon-sm {{bgColor}}" onclick="handleClick(icon4)">
                         <icon type="{{icon4.icon}}" size="70" color="white"></icon>
                     </div>
@@ -63,12 +63,12 @@
             </flex-row>
 
             <flex-row>
-                <flex-col width="4" class="right">
+                <flex-col width="4" justify="right">
                     <div if="{{icon5 !== undefined}}" class="icon icon-sm {{bgColor}}" onclick="handleClick(icon5)">
                         <icon type="{{icon5.icon}}" size="70" color="white"></icon>
                     </div>
                 </flex-col>
-                <flex-col width="4" class="center">
+                <flex-col width="4" justify="center">
                     <div if="{{icon6 !== undefined}}" class="icon icon-sm {{bgColor}}" onclick="handleClick(icon6)">
                         <icon type="{{icon6.icon}}" size="70" color="white"></icon>
                     </div>
@@ -107,17 +107,6 @@
         }
     }
 
-    .right{
-         justify-content: flex-end;
-     }
-    .center{
-         justify-content: center;
-     }
-    .middle{
-        height: 228px;
-        align-items: center;
-    }
-
     .icon{
         align-items: center;
         justify-content: center;
@@ -152,6 +141,9 @@
             },
             bgColor: {
                 default: 'bg-info'
+            },
+            hStyle:{
+                default: ''
             }
         },
 

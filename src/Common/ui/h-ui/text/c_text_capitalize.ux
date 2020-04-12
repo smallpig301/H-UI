@@ -14,18 +14,32 @@
 */
 
 <template>
-    <text>{{capitalizeText}}</text>
+    <text class="{{font}}" style="{{hStyle}}">{{capitalizeText}}</text>
 </template>
 
+<style lang="less">
+    @import '../../../styles/font.less';
+</style>
+
 <script>
-  export default {
-    props: ['text'],
-    computed: {
-        // 计算属性的 getter
-        capitalizeText() {
-          // `this` 指向 vm 实例
-          return this.text.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        },
+        computed: {
+            // 计算属性的 getter
+            capitalizeText() {
+                // `this` 指向 vm 实例
+                return this.text.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+            }
         }
     }
-  }
 </script>

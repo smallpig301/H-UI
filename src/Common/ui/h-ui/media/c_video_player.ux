@@ -14,7 +14,7 @@
 */
 
 <template>
-    <video src="{{src}}" poster="{{poster}}"></video>
+    <video src="{{src}}" poster="{{poster}}" style="{{hStyle}}"></video>
 </template>
 
 <style lang="less">
@@ -25,7 +25,13 @@
 </style>
 
 <script>
-  export default {
-    props: ['src','poster']
-  }
+    export default {
+        props: {
+            src:{},
+            poster:{},
+            hStyle:{
+                default: ''
+            }
+        }
+    }
 </script>

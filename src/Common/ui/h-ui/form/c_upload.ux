@@ -17,7 +17,7 @@
 <import name="flex-col" src="../basic/c_flex_col"></import>
 <import name="pic" src="../media/c_pic"></import>
 <template>
-    <div class="form-group" id="{{id}}">
+    <div class="form-group" id="{{id}}" style="{{hStyle}}">
         <div>
             <text if="{{compNotBlank && compTitle!==''}}" class="red">* </text>
             <text class="form-group-label-default {{validStyle}}">{{compTitle}}</text>
@@ -25,15 +25,15 @@
 
         <div class="container">
             <flex-row wrap="wrap" justify="between">
-                <flex-col width="{{colWidth}}" for="{{compData}}" class="upload">
+                <flex-col width="{{colWidth}}" for="{{compData}}" h-style="margin-top: 8px;">
                     <stack style="align-items: flex-start;">
                         <pic if="{{type === 'Image'}}" src="{{$item}}" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
                         <pic if="{{type === 'Video'}}" src="/Common/icons/video.png" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
                         <pic if="{{type === 'File'}}" src="/Common/icons/file.png" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
-                        <text class="icon icon-sm upload-remove" onclick="handleRemove({{$item}})">&#xe719;</text>
+                        <text class="icon icon-sm upload-remove" onclick="handleRemove($item)">&#xe719;</text>
                     </stack>
                 </flex-col>
-                <flex-col width="{{colWidth}}" class="upload">
+                <flex-col width="{{colWidth}}" h-style="margin-top: 8px;">
                     <stack show="{{compShow}}" class="form-control-border-default upload-button" style="{{buttonSize}}" onclick="handleClick">
                         <text show="{{!compWait}}" class="icon icon-lg">&#xe7b6;</text>
                         <progress show="{{compWait}}" class="upload-wait" type="circular"></progress>
@@ -136,6 +136,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

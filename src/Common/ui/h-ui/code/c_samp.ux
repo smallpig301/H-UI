@@ -14,21 +14,31 @@
 */
 
 <template>
-    <text class="samp">{{text}}</text>
+    <text class="samp {{font}}" style="{{hStyle}}">{{text}}</text>
 </template>
 
 <style lang="less">
-    @import '../../../styles/variables.less';
+    @import '../../../styles/font.less';
 
     .samp {
-       padding: @font-size-base * 0.2 @font-size-base * 0.4;
-       font-size: @font-size-base * 0.875;
-       font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-     }
+        padding: @font-size-base * 0.2 @font-size-base * 0.4;
+        font-size: @font-size-base * 0.875;
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
 </style>
 
 <script>
-  export default {
-    props: ['text']
-  }
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
+    }
 </script>

@@ -15,12 +15,12 @@
 
 <import name="icon" src="../basic/c_icon"></import>
 <template>
-    <div class="form-group" id="{{id}}">
+    <div class="form-group" id="{{id}}" style="{{hStyle}}">
         <div class="title" onclick="handleClick">
             <div class="title-left">
                 <text if="{{compNotBlank && title!==''}}" class="red">* </text>
                 <text class="form-group-label-default {{validStyle}}">{{title}}</text>
-                <icon if="{{typeIcon!==''}}" class="title-left-icon" color="{{validStyle}}" type="{{typeIcon}}"></icon>
+                <icon if="{{icon!==''}}" color="{{validStyle}}" type="{{icon}}" h-style="margin-left: 12px;margin-bottom:6px;width:36px;"></icon>
             </div>
             <div show="{{collapse}}" class="collapse-icon">
                 <icon if="{{hideBody}}" type="chevron-down" size="46"></icon>
@@ -53,11 +53,6 @@
         &-left{
             height: 60px;
             align-items: center;
-            &-icon{
-                margin-left: 12px;
-                margin-bottom:6px;
-                width:36px;
-            }
         }
     }
     .panel{
@@ -90,7 +85,7 @@
             },
             data: {
             },
-            typeIcon: {
+            icon: {
                 default: ''
             },
             collapse: {
@@ -103,6 +98,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

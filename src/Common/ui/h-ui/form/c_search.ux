@@ -14,13 +14,12 @@
 */
 
 <import name="icon" src="../basic/c_icon"></import>
-<import name="h-input" src="./c_input"></import>
 <template>
     <!-- 搜索栏组件 -->
-    <div class="container">
+    <div class="container" style="{{hStyle}}">
         <block if="{{uri!==''}}">
             <div class="searchbar" onclick="rediectUrl" style="background-color: #f2f2f2;">
-                <icon class="searchicon" type="search" style="margin-left: 12px;margin-top: 12px;width:36px;"></icon>
+                <icon class="searchicon" type="search" h-style="margin-left: 12px;margin-top: 12px;width:36px;"></icon>
                 <text class="place_holder">{{placeholder}}</text>
             </div>
         </block>
@@ -28,8 +27,8 @@
             <!-- 搜索栏 -->
             <div>
                 <icon type="arrow-left" class="searchicon" onclick="handleBack"></icon>
-                <div class="searchbar searchinput" onclick="rediectUrl">
-                    <icon class="searchicon" type="search" style="margin-left: 12px;margin-top: 12px;width:36px;"></icon>
+                <div class="searchbar searchinput">
+                    <icon class="searchicon" type="search" h-style="margin-left: 12px;margin-top: 12px;width:36px;"></icon>
                     <input value="{{compValue}}" onchange="setCurrentValue" placeholder="{{placeholder}}"></input>
                     <icon if="{{compValue!==''}}" type="remove" onclick="handleClean"></icon>
                 </div>
@@ -81,6 +80,9 @@
                 default: ''
             },
             value: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

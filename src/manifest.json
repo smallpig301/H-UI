@@ -1,7 +1,7 @@
 {
     "package": "hui.mobi.start",
     "name": "我的快应用",
-    "versionName": "1.0.0",
+    "versionName": "1.0.1",
     "versionCode": 1,
     "icon": "/Common/icons/logo.png",
     "minPlatformVersion": 1060,
@@ -68,6 +68,9 @@
         },
         {
             "name": "system.sms"
+        },
+        {
+            "name": "system.shortcut"
         }
     ],
     "permissions": [

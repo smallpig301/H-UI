@@ -16,7 +16,7 @@
 <import name="message" src="../feedback/c_message"></import>
 <import name="abbr" src="../advance/c_abbr"></import>
 <template>
-    <div class="form">
+    <div class="form" style="{{hStyle}}">
         <slot></slot>
 
         <div show="{{!!formError}}" class="form-error">
@@ -65,6 +65,9 @@
             },
             responseType: {
                 default: 'json'
+            },
+            hStyle:{
+                default: ''
             }
         },
 

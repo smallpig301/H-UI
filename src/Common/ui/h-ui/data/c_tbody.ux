@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="tbody">
+    <div class="tbody" style="{{hStyle}}">
         <slot></slot>
     </div>
 </template>
@@ -25,3 +25,9 @@
         flex-direction: column;
     }
 </style>
+
+<script>
+    export default {
+        props: ['hStyle']
+    }
+</script>

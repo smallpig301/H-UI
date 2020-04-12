@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="canvas-container">
+    <div class="canvas-container" style="{{hStyle}}">
         <canvas id="{{id}}" ontouchstart="handleTouchstart"></canvas>
     </div>
 </template>
@@ -41,11 +41,16 @@
             data: {},
             color: {
                 default: 'red'
+            },
+            hStyle:{
+                default: ''
             }
         },
 
-        onReady() {
-            this.drawChart()
+        onInit(){
+            setTimeout(() => {
+                this.drawChart()
+            }, 100);
         },
 
         drawChart(){

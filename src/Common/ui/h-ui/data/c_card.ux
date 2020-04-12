@@ -16,7 +16,7 @@
 <import name="icon" src="../basic/c_icon"></import>
 <import name="avatar" src="../advance/c_avatar"></import>
 <template>
-    <div class="card" onclick="handleClick">
+    <div class="card" onclick="handleClick" style="{{hStyle}}">
         <image if="{{image !== ''}}" class="card-image" src="{{image}}"></image>
 
         <div show="{{title !== ''}}" class="card-top">
@@ -24,7 +24,7 @@
                 <div if="{{icon !== ''}}" class="card-top-title-icon {{bgColor}}">
                     <icon type="{{icon}}" size="36" color="white"></icon>
                 </div>
-                <avatar if="{{avatar !== ''}}" src="{{avatar}}" size="46" class="card-top-title-avatar"></avatar>
+                <avatar if="{{avatar !== ''}}" src="{{avatar}}" size="46" h-style="margin-right:10px;"></avatar>
                 <text if="{{title !== ''}}">{{title}}</text>
             </div>
             <div class="card-top-extra" onclick="handleClick">
@@ -49,6 +49,7 @@
         border-width: 2px;
         border-radius: 8px;
         border-color: @color-border;
+        background-color: #ffffff;
         &-top{
             justify-content: space-between;
             border-color: #cccccc;
@@ -67,10 +68,7 @@
                     border-radius: 23px;
                     align-items: center;
                     justify-content: center;
-                    margin: 0 10px 0 10px;
-                }
-                &-avatar{
-                    margin: 0 10px 0 10px;
+                    margin-right:10px;
                 }
             }
             &-extra{
@@ -111,6 +109,9 @@
                 default: ''
             },
             image: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

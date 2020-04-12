@@ -14,7 +14,7 @@
 */
 
 <template>
-	<div class="c-container">
+	<div class="c-container" style="{{hStyle}}">
 	    <text class="c-banner">{{listTitle}}</text>
         <div for="{{list}}" class="c-list" onclick="detail($item.src)">
             <text class="c-title">{{$item.title}}</text>
@@ -70,7 +70,7 @@
 <script>
     import router from "@system.router";
     export default {
-        props: ['list', 'listTitle'],
+        props: ['list', 'listTitle','hStyle'],
         data() {
             return {
                 list: this.list,

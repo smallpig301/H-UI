@@ -15,9 +15,9 @@
 
 <import name="icon" src="./c_icon"></import>
 <template>
-    <div>
+    <div style="{{hStyle}}">
         <div onclick="handleClick" class="{{compUnderline}}" style="{{compAlign}}">
-            <icon if="{{typeIcon !== ''}}" type="{{typeIcon}}" size="{{size}}" color="{{compColor}}" style="margin-left: 10px;margin-right: 10px;"></icon>
+            <icon if="{{icon !== ''}}" type="{{icon}}" size="{{size}}" color="{{compColor}}" h-style="margin-left: 10px;margin-right: 10px;"></icon>
             <text class="{{compColor}}" style="{{fontSize}}">{{text}}</text>
         </div>
     </div>
@@ -105,11 +105,14 @@
             underline: {
                 default: false
             },
-            typeIcon: {
+            icon: {
                 default: ''
             },
             alignRight: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

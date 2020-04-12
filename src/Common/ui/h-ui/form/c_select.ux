@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="form-group">
+    <div class="form-group" style="{{hStyle}}">
         <div class="{{formHorizontalType}} {{noBorder ? 'form-control-no-border' : ''}}">
             <div if="{{formLabelType === 'form-group-label-horizontal'}}"  style="width:35%;">
                 <text if="{{compNotBlank && title!==''}}" class="red">* </text>
@@ -27,9 +27,9 @@
 
             <div class="{{borderType}}" style="{{formHorizontalType==='form-group-horizontal' ? 'width:65%;' : ''}}">
                 <text if="{{compNotBlank && title===''}}" class="red"> * </text>
-                <select id="{{id}}" disabled="{{disabled}}" onchange="handleChange" style="width:100%;margin-right: 12px;">
-                    <option value="{{emptyValue}}">{{placeholder}}</option>
-                    <option value="{{$item.value}}" selected="{{compValue === $item.value}}" for="{{data}}">{{$item.label}}</option>
+                <select id="{{id}}" disabled="{{disabled}}" onchange="handleChange" style="width:100%;height:75px;padding:12px 12px 18px 12px;line-height: 45px;margin-right: 12px;">
+                    <option value="{{emptyValue}}" style="width:100%;padding:12px;">{{placeholder}}</option>
+                    <option value="{{$item.value}}" selected="{{compValue === $item.value}}" for="{{data}}" style="width:100%;padding:12px;">{{$item.label}}</option>
                 </select>
             </div>
         </div>
@@ -99,6 +99,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

@@ -20,7 +20,7 @@
               placeholder="{{compPlaceholder}}" value="{{value}}" align-right="{{alignRight}}" tip="{{tip}}" 
               valid="{{valid}}" valid-icon="{{compValidIcon}}" not-blank="{{compNotBlank}}" disabled="{{disabled}}"
               pattern="^((?:4\d{3})|(?:5[1-5]\d{2})|(?:6011)|(?:3[68]\d{2})|(?:30[012345]\d))[ -]?(\d{4})[ -]?(\d{4})[ -]?(\d{4}|3[4,7]\d{13})$"
-              form-error="{{formError}}">
+              form-error="{{formError}}" h-style="{{hStyle}}">
     </h-input>
 </template>
 
@@ -73,6 +73,9 @@
             },
             disabled:{
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
         computed: {

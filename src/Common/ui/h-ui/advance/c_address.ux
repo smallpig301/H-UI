@@ -16,12 +16,12 @@
 <import name="b" src="../text/c_tag_b"></import>
 <import name="abbr" src="./c_abbr"></import>
 <template>
-    <div class="address-container">
-        <b text="{{headerText}}" class="{{headerStyles}}"></b>
+    <div class="address-container" style="{{hStyle}}">
+        <b text="{{headerText}}" font="{{headerStyles}}"></b>
         <text class="{{mainStyles}}">{{mainText}}</text>
         <slot></slot>
         <div>
-            <abbr text="{{abbrText}}" class="{{abbrStyles}}" title="{{abbrTitle}}"></abbr>
+            <abbr text="{{abbrText}}" font="{{abbrStyles}}" title="{{abbrTitle}}"></abbr>
             <text class="{{footerStyles}}">{{footerText}}</text>
         </div>
     </div>
@@ -37,6 +37,6 @@
 
 <script>
 export default {
-    props: ['headerText', 'headerStyles', 'mainText', 'mainStyles', 'abbrText', 'abbrStyles', 'abbrTitle', 'footerText', 'footerStyles']
+    props: ['headerText', 'headerStyles', 'mainText', 'mainStyles', 'abbrText', 'abbrStyles', 'abbrTitle', 'footerText', 'footerStyles', 'hStyle']
 }
 </script>

@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="form-group">
+    <div class="form-group" style="{{hStyle}}">
         <div class="{{formHorizontalType}} {{noBorder ? 'form-control-no-border' : ''}}">
             <div if="{{formLabelType === 'form-group-label-horizontal'}}"  style="width:35%;">
                 <text if="{{compNotBlank && compTitle!==''}}" class="red">* </text>
@@ -156,6 +156,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

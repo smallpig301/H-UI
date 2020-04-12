@@ -15,18 +15,21 @@
 
 <import name="flex-row" src="../basic/c_flex_row"></import>
 <import name="flex-col" src="../basic/c_flex_col"></import>
+<import name="dl" src="./c_list_dl"></import>
+<import name="dt" src="./c_list_dt"></import>
+<import name="dd" src="./c_list_dd"></import>
 <import name="modal" src="../feedback/c_modal"></import>
 <import name="b" src="../text/c_tag_b"></import>
 <template>
-    <div class="table {{borderless ? '' : (bordered ? 'table-border' : '')}}">
+    <div class="table {{borderless ? '' : (bordered ? 'table-border' : '')}}" style="{{hStyle}}">
         <modal if="{{id !== undefined}}" id="{{id + '_modal'}}"></modal>
-        <flex-row class="{{borderless ? '' : (bordered ? 'tr-border' : 'tr')}}" if="{{data !== undefined}}">
-            <flex-col class="th-first {{sm ? 'th-first-sm' : ''}} {{theadType === '' ? '' : 'th-' + theadType}} {{borderless ? '' : (bordered ? 'th-first-border' : '')}}" width="1">
-                <b text="#" class="{{theadType === '' ? '' : 'th-' + theadType + '-text'}}"></b>
+        <flex-row h-style="{{borderless ? '' : (bordered ? 'border-top-color:#dddddd;border-top-width:2px;' : 'border-bottom-color:#dddddd;border-bottom-width:2px;')}}" if="{{data !== undefined}}">
+            <flex-col h-style="{{compTheadThFirstStyle}}" width="1">
+                <b text="#" h-style="{{compTheadTextStyle}}"></b>
             </flex-col>
             <block for="{{data.thead}}">
-                <flex-col class="th {{sm ? 'th-sm' : ''}} {{theadType === '' ? '' : 'th-' + theadType}} {{borderless ? '' : (bordered ? 'th-border' : '')}}" width="{{$item.width}}">
-                    <b text="{{ $t('message.' + $item.key) }}" class="{{theadType === '' ? '' : 'th-' + theadType + '-text'}}"></b>
+                <flex-col h-style="{{compTheadThStyle}}" width="{{$item.width}}">
+                    <b text="{{ $t('message.' + $item.key) }}" h-style="{{compTheadTextStyle}}"></b>
                 </flex-col>
             </block>
         </flex-row>
@@ -34,13 +37,13 @@
         <block for="{{compData}}">
             <!--数据概要-->
             <div onclick="handleClick($idx)">
-                <flex-row  class="{{borderless ? '' : (bordered ? 'tr-border' : 'tr')}}">
-                    <flex-col class="th-first {{sm ? 'th-first-sm' : ''}} {{$item.type === '' ? '' : 'th-' + $item.type}} {{borderless ? '' : (bordered ? 'th-first-border' : '')}}" width="1">
-                        <b text="{{$idx + 1}}" class="{{$item.type === '' ? '' : 'th-' + $item.type + '-text'}}"></b>
+                <flex-row h-style="{{borderless ? '' : (bordered ? 'border-top-color:#dddddd;border-top-width:2px;' : 'border-bottom-color:#dddddd;border-bottom-width:2px;')}}">
+                    <flex-col h-style="{{$item.thStyle}}" width="1">
+                        <b text="{{$idx + 1}}" h-style="{{$item.textStyle}}"></b>
                     </flex-col>
                     <block for="{{tdData in $item.data}}">
-                        <flex-col if="{{tdData.show}}" class="th {{sm ? 'th-sm' : ''}} {{$item.type === '' ? '' : 'th-' + $item.type}} {{borderless ? '' : (bordered ? 'th-border' : '')}}" width="{{tdData.width}}">
-                            <text class="{{$item.type === '' ? '' : 'th-' + $item.type + '-text'}}">{{tdData.value}}</text>
+                        <flex-col if="{{tdData.show}}" h-style="{{$item.tdStyle}}" width="{{tdData.width}}">
+                            <text style="{{$item.textStyle}}">{{tdData.value}}</text>
                         </flex-col>
                     </block>
                 </flex-row>
@@ -48,16 +51,14 @@
 
             <!--数据详情-->
             <div class="memo" if="{{$item.open}}" onclick="handleClick($idx)">
-                <block for="{{tdData in $item.data}}">
-                    <flex-row align="top">
-                        <flex-col class="memo-right" width="3">
-                            <text class="memo-right-text">{{ $t('message.' + tdData.key) }}:</text>
-                        </flex-col>
-                        <flex-col class="memo-left" width="9">
-                            <text>{{tdData.value}}</text>
-                        </flex-col>
-                    </flex-row>
-                </block>
+                <dl h-style="margin-top:10px;margin-bottom:10px;">
+                    <block for="{{tdData in $item.data}}">
+                        <div class="memo-item">
+                            <dt width="3" text="{{ $t('message.' + tdData.key) }}:"></dt>
+                            <dd width="9" text="{{tdData.value}}"></dd>
+                        </div>
+                    </block>
+                </dl>
 
                 <div class="memo-operate">
                     <div if="{{showDelete || showEdit}}" class="memo-operate-left">
@@ -105,118 +106,17 @@
         }
     }
 
-    .tr{
-        border-bottom-color: @color-border;
-        border-bottom-width: 2px;
-        &-border{
-            border-top-color: @color-border;
-            border-top-width: 2px;
-        }
-    }
-
-    .th{
-        justify-content:center;
-        padding: 20px 5px;
-        &-border {
-            border-right-width: 1px;
-            border-color: @color-border;
-        }
-        &-sm{
-            justify-content:center;
-            padding: 10px 5px;
-        }
-        &-first{
-            justify-content:center;
-            padding: 20px 0;
-            &-border {
-                border-left-width: 1px;
-                border-right-width: 1px;
-                border-color: @color-border;
-            }
-            &-sm{
-                justify-content:center;
-                padding: 10px 0;
-            }
-        }
-        &-dark{
-            background-color: #222529;
-            &-text{
-                color: #ffffff;
-            }
-            &-striped{
-                background-color: #2c2f33;
-                &-text{
-                    color: #ffffff;
-                }
-            }
-        }
-        &-light{
-            background-color: #e9ecef;
-            &-text{
-                color: #4a5056;
-            }
-        }
-        &-striped{
-            background-color: #f3f3f3;
-            &-text{
-                color: #323539;
-            }
-        }
-        &-default{
-            background-color: #ffffff;
-            &-text{
-                color: #222529;
-            }
-        }
-        &-primary{
-            background-color: @color-primary;
-            &-text{
-                color: #ffffff;
-            }
-        }
-        &-success{
-            background-color: @color-success;
-            &-text{
-                color: #ffffff;
-            }
-        }
-        &-warning{
-            background-color: @color-warning;
-            &-text{
-                color: #ffffff;
-            }
-        }
-        &-danger{
-            background-color: @color-danger;
-            &-text{
-                color: #ffffff;
-            }
-        }
-        &-info{
-            background-color: @color-info;
-            &-text{
-                color: #ffffff;
-            }
-        }
-    }
 
     .memo{
         width: 100%;
         flex-direction: column;
+        margin: 10px 0;
         border-width: 2px;
         border-radius: 8px;
         border-color: @color-border;
-        margin: 10px 0;
         background-color: @color-light;
-        &-left{
-            padding: 20px 5px;
-        }
-        &-right{
-            justify-content: flex-end;
-            padding: 20px 5px;
-            &-text{
-                font-weight: bolder;
-            }
+        &-item{
+            padding: 10px 0;
         }
         &-operate{
             justify-content: space-between;
@@ -276,6 +176,9 @@
             },
             sm: {//紧缩表格
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 
@@ -286,6 +189,114 @@
                 deleteIndex: -1,
                 theadType: ''
             }
+        },
+
+        computed: {
+            compTheadThFirstStyle() {
+                var style = 'justify-content:center;'
+                style += this.sm ? 'padding-top:10px;padding-bottom:10px;' : 'padding-top:20px;padding-bottom:20px;'
+
+                if(this.theadType !== ''){
+                    style += this.compTypeStyle(this.theadType)
+                }
+
+                if(!this.borderless){
+                    if(this.bordered){
+                        style += 'border-left-width: 1px;border-right-width: 1px;border-color: #dddddd;'
+                    }
+                }
+
+                return style
+            },
+            compTheadThStyle() {
+                var style = 'justify-content:center;'
+                style += this.sm ? 'padding-top:10px;padding-right:5px;padding-bottom:10px;padding-left:5px;' : 'padding-top:20px;padding-right:5px;padding-bottom:20px;padding-left:5px;'
+
+                if(this.theadType !== ''){
+                    style += this.compTypeStyle(this.theadType)
+                }
+
+                if(!this.borderless){
+                    if(this.bordered){
+                        style += 'border-right-width: 1px;border-color: #dddddd;'
+                    }
+                }
+
+                return style
+            },
+            compTheadTextStyle() {
+                var style = ''
+                if(this.theadType !== ''){
+                    style = this.compTypeTextStyle(this.theadType)
+                }
+
+                return style
+            }
+        },
+
+        compTypeStyle(type) {
+            var style = ''
+            switch (type){
+                case 'dark':
+                    style = 'background-color: #222529;'
+                    break
+                case 'dark-striped':
+                    style = 'background-color: #2c2f33;'
+                    break
+                case 'light':
+                    style = 'background-color: #e9ecef;'
+                    break
+                case 'striped':
+                    style = 'background-color: #f3f3f3;'
+                    break
+                case 'primary':
+                    style = 'background-color: #337ab7;'
+                    break
+                case 'success':
+                    style = 'background-color: #67c23a;'
+                    break
+                case 'warning':
+                    style = 'background-color: #e6a23c;'
+                    break
+                case 'danger':
+                    style = 'background-color: #f56c6c;'
+                    break
+                case 'info':
+                    style = 'background-color: #5bc0de;'
+                    break
+                case 'default':
+                default:
+                    style = 'background-color: #ffffff;'
+                    break
+
+            }
+            return style
+        },
+
+        compTypeTextStyle(type) {
+            var style = ''
+            switch (type){
+                case 'dark':
+                case 'dark-striped':
+                case 'primary':
+                case 'success':
+                case 'warning':
+                case 'danger':
+                case 'info':
+                    style = 'color: #ffffff;'
+                    break
+                case 'light':
+                    style = 'color: #4a5056;'
+                    break
+                case 'striped':
+                    style = 'color: #323539;'
+                    break
+                case 'default':
+                default:
+                    break
+
+            }
+            return style
         },
 
         onInit() {
@@ -368,9 +379,41 @@
                             this.theadType = 'dark'
                         }
 
+                        //样式处理
+                        var thStyle = 'justify-content:center;'
+                        thStyle += this.sm ? 'padding-top:10px;padding-bottom:10px;' : 'padding-top:20px;padding-bottom:20px;'
+
+                        if(type !== ''){
+                            thStyle += this.compTypeStyle(type)
+                        }
+
+                        if(!this.borderless){
+                            if(this.bordered){
+                                thStyle += 'border-left-width: 1px;border-right-width: 1px;border-color: #dddddd;'
+                            }
+                        }
+
+                        var tdStyle = 'justify-content:center;'
+                        tdStyle += this.sm ? 'padding-top:10px;padding-right:5px;padding-bottom:10px;padding-left:5px;' : 'padding-top:20px;padding-right:5px;padding-bottom:20px;padding-left:5px;'
+
+                        if(type !== ''){
+                            tdStyle += this.compTypeStyle(type)
+                        }
+
+                        if(!this.borderless){
+                            if(this.bordered){
+                                tdStyle += 'border-right-width: 1px;border-color: #dddddd;'
+                            }
+                        }
+
+                        var textStyle = this.compTypeTextStyle(type)
+
                         var item = {
                             open: this.active.indexOf(i) !== -1,
                             type: type,
+                            thStyle: thStyle,
+                            tdStyle: tdStyle,
+                            textStyle: textStyle,
                             data: itemData
                         }
 

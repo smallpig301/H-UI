@@ -13,19 +13,32 @@
 *
 */
 
+<import name="flex-col" src="../basic/c_flex_col"></import>
 <template>
-    <text class="dd">{{text}}</text>
+    <flex-col width="{{width}}" h-style="{{width < 12 ? 'padding-left:6px;' : ''}}{{hStyle}}">
+        <text class="{{font}}">{{text}}</text>
+    </flex-col>
 </template>
 
 <style lang="less">
-    .dl-horizontal > .dd{
-        width: 70%;
-        padding-left: 16px;
-    }
+    @import '../../../styles/font.less';
 </style>
 
 <script>
     export default {
-        props: ['text']
+        props: {
+            text: {
+                default: ''
+            },
+            width: {
+                default: 12
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
     }
 </script>

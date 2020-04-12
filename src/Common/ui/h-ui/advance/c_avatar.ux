@@ -15,7 +15,7 @@
 
 <import name="icon" src="../basic/c_icon"></import>
 <template>
-    <div class="{{bgColor}}" style="{{compStyle}}">
+    <div class="{{bgColor}}" style="{{compStyle}}{{hStyle}}">
         <icon if="{{!!icon}}" type="{{icon}}" size="{{size * 0.8}}" color="{{(bgColor === 'bg-lignt' || bgColor === 'bg-white') ? 'black' : 'white'}}"></icon>
         <image if="{{!!src}}" style="{{compStyle}}" src="{{src}}"></image>
         <text if="{{compText !== ''}}" style="{{compTextStyle}}">{{compText}}</text>
@@ -48,6 +48,9 @@
           },
           circle: {
               default: 'true'
+          },
+          hStyle:{
+              default: ''
           }
       },
       computed: {

@@ -14,7 +14,7 @@
 */
 
 <template>
-    <div class="form-group">
+    <div class="form-group" style="{{hStyle}}">
         <div class="{{formHorizontalType}} {{noBorder ? 'form-control-no-border' : ''}}">
             <block if="{{formLabelType === 'form-group-label-horizontal'}}">
                 <text class="form-group-label-horizontal"  style="width:35%;">{{title}}：</text>
@@ -55,6 +55,9 @@
             },
             alignRight: {
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 

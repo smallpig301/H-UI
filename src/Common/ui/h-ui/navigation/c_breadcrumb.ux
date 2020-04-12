@@ -14,9 +14,9 @@
 */
 
 <template>
-    <div class="breadcrumb">
+    <div class="breadcrumb" style="{{hStyle}}">
         <block for="{{data}}">
-            <text class="{{!!$item.uri ? 'b' : ''}}" onclick="showDetail({{$item.uri}})">{{$item.text}}</text>
+            <text class="{{!!$item.uri ? 'b' : ''}}" onclick="showDetail($item.uri)">{{$item.text}}</text>
             <text class="breadcrumb-separator" if="{{$idx < (data.length - 1)}}">{{separator}}</text>
         </block>
     </div>
@@ -43,6 +43,9 @@
             data:{},
             separator: {
                 default: '/'
+            },
+            hStyle:{
+                default: ''
             }
         },
         showDetail: function(uri) {

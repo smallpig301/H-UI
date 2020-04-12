@@ -21,9 +21,9 @@
 <import name="transfer" src="../form/c_transfer"></import>
 <import name="h-select" src="../form/c_select"></import>
 <import name="short" src="../form/c_short"></import>
-<import name="button" src="../basic/c_button"></import>
+<import name="h-button" src="../basic/c_button"></import>
 <template>
-    <div class="calendar">
+    <div class="calendar" style="{{hStyle}}">
         <div class="calendar-container">
             <h-input id="title" params="{{params}}" value="{{data.title}}" title="标题" placeholder="请设置事件的标题" valid="none"></h-input>
             <textarea class="calendar-description" placeholder="事件描述" maxlength="70" onchange="handleChange">{{data.content}}</textarea>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="calendar-container">
-            <button id="btn" text="插入日历" type="{{type}}" block="true" onclick="handleClick"></button>
+            <h-button id="btn" text="插入日历" type="{{type}}" block="true" onclick="handleClick"></h-button>
             <message id="message"></message>
         </div>
     </div>
@@ -115,16 +115,19 @@
     export default {
         props: {
             data: {},
+            params: {},
             type: {
                 default: 'primary'
             },
             simple: {//简单模式，不可设提醒和重复
                 default: false
+            },
+            hStyle:{
+                default: ''
             }
         },
 
         data: {
-            params: {},
             content: '',
             collapse: true,
             showPanel: false,

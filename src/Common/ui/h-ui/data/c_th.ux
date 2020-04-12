@@ -14,27 +14,31 @@
 */
 
 <import name="flex-col" src="../basic/c_flex_col"></import>
+<import name="b" src="../text/c_tag_b"></import>
 <template>
-    <flex-col class="th" width="{{width}}">
-        <slot></slot>
+    <flex-col width="{{width}}" justify="center" h-style="padding-top:20px;padding-right:5px;padding-bottom:20px;padding-left:5px;{{hStyle}}">
+        <b text="{{text}}" font="{{font}}"></b>
     </flex-col>
 </template>
 
 <style lang="less">
-    .th{
-        justify-content:center;
-        padding: 20px 5px;
-    }
+    @import '../../../styles/font.less';
 </style>
 
 <script>
     export default {
         props: {
-            scope:{
-                default: 'row'
+            text: {
+                default: ''
             },
             width: {
-                default: '4'
+                default: 4
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
             }
         }
     };

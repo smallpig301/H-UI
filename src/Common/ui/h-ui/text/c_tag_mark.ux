@@ -14,11 +14,11 @@
 */
 
 <template>
-    <text class="mark">{{text}}</text>
+    <text class="mark {{font}}" style="{{hStyle}}">{{text}}</text>
 </template>
 
 <style lang="less">
-    @import '../../../styles/variables.less';
+    @import '../../../styles/font.less';
 
     .mark {
         padding: @font-size-base * 0.2;
@@ -27,7 +27,17 @@
 </style>
 
 <script>
-  export default {
-    props: ['text']
-  }
+    export default {
+        props: {
+            text: {
+                default: ''
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
+            }
+        }
+    }
 </script>

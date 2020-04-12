@@ -13,22 +13,21 @@
 *
 */
 
-<import name="li" src="./c_list_li"></import>
+<import name="flex-row" src="../basic/c_flex_row"></import>
+<import name="flex-col" src="../basic/c_flex_col"></import>
 <template>
-    <div class="{{containerType}}">
+    <flex-row wrap="wrap" justify="{{justify}}" align="{{align}}" h-style="{{hStyle}}">
         <block for="{{data}}">
-            <li>
-                <text>{{$idx+1}} >. {{$item.text}}</text>
-            </li>
+            <flex-col  width="{{width}}">
+                <text class="{{font}}">{{$idx+1}} >. {{$item.text}}</text>
+            </flex-col>
         </block>
         <slot></slot>
-    </div>
+    </flex-row>
 </template>
 
 <style lang="less">
-    .ol-container {
-        flex-direction: column;
-    }
+    @import '../../../styles/font.less';
 </style>
 
 <script>
@@ -36,13 +35,20 @@
         props: {
             data: {
             },
-            inline: {
-                default: false
-            }
-        },
-        computed: {
-            containerType() {
-                return this.inline ? "" : "ol-container"
+            width: {
+                default: 12
+            },
+            justify: {
+                default: 'left'        //项目在主轴上的对齐方式。支持：left(默认),center,right,between,around
+            },
+            align: {
+                default: 'stretch'     //项目在交叉轴上如何对齐。支持：stretch(默认),top,middle,bottom,baseline
+            },
+            font:{
+                default: ''
+            },
+            hStyle:{
+                default: ''
             }
         }
     }

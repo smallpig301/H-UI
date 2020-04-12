@@ -20,7 +20,7 @@
               type="{{compType}}" type-icon="{{compTypeIcon}}" no-border="{{noBorder}}" form-horizontal="{{formHorizontal}}"
               title="{{title}}" name="{{name}}" focus="{{focus}}" maxlength="{{maxlength}}" 
               value="{{compValue}}" align-right="{{alignRight}}" tip="{{compTip}}" 
-              valid="{{valid}}" valid-icon="{{compValidIcon}}" pattern="{{compPattern}}" form-error="{{formError}}">
+              valid="{{valid}}" valid-icon="{{compValidIcon}}" pattern="{{compPattern}}" form-error="{{formError}}" h-style="{{hStyle}}">
     </number>
 </template>
 
@@ -92,6 +92,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

@@ -97,18 +97,14 @@
     import router from '@system.router';
 
     export default {
-        props: {
-            src:{
 
-            },
-            uri:{
-                default: ''
-            },
-            placement: {
-                // 关闭按钮的位置，支持top-left,top,top-right,bottom-left,bottom,bottom-right
-                default: 'top-right'
-            },
-            isShow: false
+        data() {
+            return {
+                src: '',
+                uri: '',
+                placement: 'top-right',// 关闭按钮的位置，支持top-left,top,top-right,bottom-left,bottom,bottom-right
+                isShow: false
+            }
         },
 
         computed: {

@@ -13,11 +13,10 @@
 *
 */
 
-<import name="button" src="../basic/c_button"></import>
 <import name="count-down" src="../advance/c_count_down"></import>
 <import name="message" src="../feedback/c_message"></import>
 <template>
-    <div class="form-group">
+    <div class="form-group" style="{{hStyle}}">
         <message id="{{id + '_message'}}"></message>
         <div show="{{showTip}}" style="align-items: flex-start;">
             <text class="icon warning" style="margin-top: 6px;">&#xe7b1;</text>
@@ -43,7 +42,7 @@
                 </input>
 
                 <input if="{{compStatus === 0}}" class="{{noBorder || formHorizontal ? 'btn' : 'btn-primary'}}" type="button" value="发送" onclick="handleClick"></input>
-                <count-down if="{{compStatus === 1}}" id="{{id + '_countdown'}}" expiration="{{expiration}}" style="margin-right: 12px;margin-top: 7px;width:120px;"></count-down>
+                <count-down if="{{compStatus === 1}}" id="{{id + '_countdown'}}" expiration="{{expiration}}" h-style="margin-right: 12px;margin-top: 7px;width:120px;"></count-down>
             </div>
         </div>
 
@@ -64,7 +63,7 @@
 
     .icon{
         font-family: hui;
-        font-size: 33px;
+        font-size: 30px;
     }
     input {
         height: @font-size-base * 2.5;
@@ -145,6 +144,9 @@
             mobileId: {},
             expiration: {
                 default: 120
+            },
+            hStyle:{
+                default: ''
             }
         },
 

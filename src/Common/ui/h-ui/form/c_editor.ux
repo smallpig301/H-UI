@@ -15,10 +15,7 @@
 
 <import name="p" src="../text/c_p"></import>
 <import name="message" src="../feedback/c_message"></import>
-<import name="audio-player" src="..//media/c_audio_player"></import>
-<import name="ai-voice" src="../ai/c_ai_voice"></import>
-<import name="ai-doc" src="../ai/c_ai_doc"></import>
-<import name="ai-image" src="../ai/c_ai_image"></import>
+<import name="audio-player" src="../media/c_audio_player"></import>
 <template>
     <div class="form-group" id="{{id}}">
         <div style="justify-content: space-between;">
@@ -41,10 +38,6 @@
                         <text id="{{id + '_audio_' + $idx}}" class="icon icon-normal" onclick="handleAppend">&#xe84d;</text>
                     </div>
                     <div>
-                        <ai-voice target-id="{{id + '_textarea_' + $idx}}" size="60" color="default" active-color="primary"></ai-voice>
-                        <ai-doc target-id="{{id + '_textarea_' + $idx}}" size="60" color="default" active-color="primary"></ai-doc>
-                    </div>
-                    <div>
                         <text id="{{id + '_trash_' + $idx}}" class="icon icon-normal" onclick="handleTrash">&#xe7b8;</text>
                         <text if="{{!preview}}" class="icon icon-normal" onclick="handlePreview">&#xe80c;</text>
                     </div>
@@ -60,9 +53,6 @@
                         <text id="{{id + '_image_' + $idx}}" class="icon icon-lg" onclick="handleAppend">&#xe813;</text>
                         <text id="{{id + '_video_' + $idx}}" class="icon icon-normal" onclick="handleAppend">&#xe850;</text>
                         <text id="{{id + '_audio_' + $idx}}" class="icon icon-normal" onclick="handleAppend">&#xe84d;</text>
-                    </div>
-                    <div>
-                        <ai-image target-id="{{id + '_aiimage_' + $idx}}" size="60" color="default" uri="{{$item.value}}"></ai-image>
                     </div>
                     <div>
                         <text id="{{id + '_trash_' + $idx}}" class="icon icon-normal" onclick="handleTrash">&#xe7b8;</text>
@@ -304,79 +294,7 @@
                 this.preview = true
             }
 
-            this.$on('aiVoice_dispatchEvt',this.dispatchAiVoiceEvt)
-            this.$on('aiDetectText_dispatchEvt',this.dispatchAiDetectTextEvt)
             this.$on('aiImageSave_dispatchEvt',this.dispatchAiImageSaveEvt)
-        },
-
-        dispatchAiVoiceEvt(evt) {
-            var data = evt.detail.value
-            var targetId = data.targetId //接受语音识别的组件Id
-            var word = data.word //语音识别结果：文字
-
-            //获得焦点位置
-            let _this = this
-            var index = Number(targetId.substr(targetId.lastIndexOf('_')+1, targetId.length-(targetId.lastIndexOf('_')+1)))
-            this.$element(targetId).getSelectionRange({
-                callback: function (start, end) {
-                    var oldText = _this.compData[index].value
-
-                    var text1 = oldText.substr(0,start)
-                    var text2 = oldText.substr(start, oldText.length - start)
-
-                    var arr = []
-                    for(var i=0;i<_this.compData.length;i++){
-                        if(i === index){
-                            var item = {
-                                type: "text",
-                                value: text1 + word + text2
-                            }
-                            arr.push(item)
-                        }else{
-                            arr.push(_this.compData[i])
-                        }
-                    }
-                    _this.compData = arr
-
-                    var newStart = text1.length + word.length
-                    _this.$element(targetId).setSelectionRange({start: newStart, end: newStart})
-                }
-            })
-        },
-
-        dispatchAiDetectTextEvt(evt) {
-            var data = evt.detail.value
-            var targetId = data.targetId //接受文档识别的组件Id
-            var text = data.text //文档识别结果
-
-            //获得焦点位置
-            let _this = this
-            var index = Number(targetId.substr(targetId.lastIndexOf('_')+1, targetId.length-(targetId.lastIndexOf('_')+1)))
-            this.$element(targetId).getSelectionRange({
-                callback: function (start, end) {
-                    var oldText = _this.compData[index].value
-
-                    var text1 = oldText.substr(0,start)
-                    var text2 = oldText.substr(start, oldText.length - start)
-
-                    var arr = []
-                    for(var i=0;i<_this.compData.length;i++){
-                        if(i === index){
-                            var item = {
-                                type: "text",
-                                value: text1 + text + text2
-                            }
-                            arr.push(item)
-                        }else{
-                            arr.push(_this.compData[i])
-                        }
-                    }
-                    _this.compData = arr
-
-                    var newStart = text1.length + text.length
-                    _this.$element(targetId).setSelectionRange({start: newStart, end: newStart})
-                }
-            })
         },
 
         //更新图片
@@ -387,7 +305,7 @@
 
             var index = Number(targetId.substr(targetId.lastIndexOf('_')+1, targetId.length-(targetId.lastIndexOf('_')+1)))
 
-            //上传到华为云OBS
+            //上传到云OBS
             let _this = this
 
             // 超时

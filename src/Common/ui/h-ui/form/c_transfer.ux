@@ -17,12 +17,12 @@
 <import name="flex-row" src="../basic/c_flex_row"></import>
 <import name="flex-col" src="../basic/c_flex_col"></import>
 <template>
-    <div class="form-group" id="{{id}}">
+    <div class="form-group" id="{{id}}" style="{{hStyle}}">
         <div if="{{title!==''}}" class="title" onclick="handleClick">
             <div class="title-left">
                 <text if="{{compNotBlank && title!==''}}" class="red">* </text>
                 <text class="form-group-label-default {{validStyle}}">{{title}}</text>
-                <icon if="{{typeIcon!==''}}" class="title-left-icon" color="{{validStyle}}" type="{{typeIcon}}"></icon>
+                <icon if="{{icon!==''}}" color="{{validStyle}}" type="{{icon}}" h-style="margin-left: 12px;margin-bottom:6px;width:36px;"></icon>
             </div>
             <div show="{{collapse}}" class="collapse-icon">
                 <icon if="{{hideBody}}" type="chevron-down" size="46"></icon>
@@ -32,7 +32,7 @@
 
         <div show="{{!hideBody}}" class="container">
             <flex-row>
-                <flex-col class="panel form-control-border-default" width="5">
+                <flex-col width="5" h-style="flex-direction: column;border-width: 2px;border-radius: 8px;border-color: #dddddd;">
                     <block for="{{compData}}">
                         <div if="{{!$item.checked}}" class="form-group-control-horizontal">
                             <input type="checkbox" name="{{id}}" value="{{$item.value}}" disabled="{{$item.disabled ? 'true' : 'false'}}" checked="{{$item.checked ? 'true' : 'false'}}" onchange="handleChange" />
@@ -40,10 +40,10 @@
                         </div>
                     </block>
                 </flex-col>
-                <flex-col width="2" style="justify-content:center;">
+                <flex-col width="2" justify="center">
                     <icon type="transfer"></icon>
                 </flex-col>
-                <flex-col class="panel form-control-border-default" width="5">
+                <flex-col width="5" h-style="flex-direction: column;border-width: 2px;border-radius: 8px;border-color: #dddddd;">
                     <block for="{{compData}}">
                         <div if="{{$item.checked}}" class="form-group-control-horizontal">
                             <input type="checkbox" name="{{id}}" value="{{$item.value}}" disabled="{{$item.disabled ? 'true' : 'false'}}" checked="{{$item.checked ? 'true' : 'false'}}" onchange="handleChange" />
@@ -70,11 +70,6 @@
         &-left{
             height: 60px;
             align-items: center;
-            &-icon{
-                margin-left: 12px;
-                margin-bottom:6px;
-                width:36px;
-            }
         }
     }
     .panel{
@@ -107,7 +102,7 @@
             },
             data: {
             },
-            typeIcon: {
+            icon: {
                 default: ''
             },
             collapse: {
@@ -120,6 +115,9 @@
                 default: ''
             },
             formError: {
+                default: ''
+            },
+            hStyle:{
                 default: ''
             }
         },

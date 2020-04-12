@@ -14,7 +14,7 @@
 */
 
 <template>
-    <tabs onchange="onChangeTabIndex" index="{{current}}">
+    <tabs onchange="onChangeTabIndex" index="{{current}}" style="{{hStyle}}">
         <tab-bar class="segment">
             <block for="{{compData}}">
                 <div class="segment-item {{$idx === 0 ? 'first' : (($idx === compData.length - 1) ? 'last' : ($idx === 1 ? 'second' : 'center'))}}" style="{{$item.color}}">
@@ -23,7 +23,7 @@
             </block>
         </tab-bar>
 
-        <tab-content>
+        <tab-content style="{{compStyle}}">
             <slot></slot>
         </tab-content>
     </tabs>
@@ -65,6 +65,8 @@
 </style>
 
 <script>
+    import { loaderConfig } from '../../../utils/config'
+
     export default {
         props: {
             data: {
@@ -75,6 +77,9 @@
             },
             hexColor: {
                 default: '#ff0000'
+            },
+            hStyle:{
+                default: ''
             }
         },
 
@@ -90,6 +95,9 @@
                     arr.push(item)
                 }
                 return arr
+            },
+            compStyle() {//修复快应用联盟加载器错误
+                return (loaderConfig.type.toUpperCase() === 'HUAWEI') ? '' : 'padding-left:33px;'
             }
         },
 

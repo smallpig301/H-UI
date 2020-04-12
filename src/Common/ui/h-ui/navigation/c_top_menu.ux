@@ -30,12 +30,22 @@
     .topmenu{
         position: fixed;
         top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
+        left: 33px;
+        right: 33px;
+        width: 684px;
         justify-content: center;
         background-color: rgba(255,255,255,0.9);
 
+    }
+    select{
+        width:100%;
+        height:75px;
+        padding:12px 12px 18px 12px;
+        line-height: 45px;
+    }
+    option{
+        width:100%;
+        padding:12px;
     }
 </style>
 
@@ -47,8 +57,20 @@
             data: {}
         },
 
+        data() {
+            return {
+                compInit: true
+            }
+        },
+
+        onInit(){
+            setTimeout(() => {
+                this.compInit = false
+            }, 500);
+        },
+
         handleChange (e) {
-            if(e.newValue !== '') {
+            if(!this.compInit) {
                 router.push({
                     uri: e.newValue
                 });
