@@ -19,7 +19,7 @@
         <div for="{{list}}" class="c-list" onclick="detail($item.src)">
             <text class="c-title">{{$item.title}}</text>
             <text class="c-sub-title">{{$item.subTitle}}</text>
-            <image class="c-img" src="/Common/icons/arrow.png"></image>
+            <image class="c-img" src="../../../icons/arrow.png"></image>
         </div>
 	</div>
 </template>

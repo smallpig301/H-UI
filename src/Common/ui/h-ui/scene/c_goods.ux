@@ -26,7 +26,7 @@
             </div>
             <div class="goods-top-extra" onclick="handleClick">
                 <text class="goods-top-extra-text">{{data.extra}}</text>
-                <image if="{{data.uri !== undefined}}" class="goods-top-extra-arrow" src="/Common/icons/arrow.png"></image>
+                <image if="{{data.uri !== undefined}}" class="goods-top-extra-arrow" src="../../../icons/arrow.png"></image>
             </div>
         </div>
 

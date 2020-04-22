@@ -44,7 +44,7 @@
 
     @font-face {
         font-family: hui;
-        src: url('/Common/fonts/hui.ttf');
+        src: url('https://h-ui.obs.cn-south-1.myhuaweicloud.com/font/hui.ttf');
     }
 
     .icon{
@@ -52,14 +52,14 @@
         font-size: 33px;
     }
     .rating-star {
-        star-background: url(/Common/icons/star1.png);
-        star-secondary: url(/Common/icons/star2.png);
-        star-foreground: url(/Common/icons/star3.png);
+        star-background: url(../../../icons/star1.png);
+        star-secondary: url(../../../icons/star2.png);
+        star-foreground: url(../../../icons/star3.png);
     }
     .rating-heart {
-        star-background: url(/Common/icons/star4.png);
-        star-secondary: url(/Common/icons/star5.png);
-        star-foreground: url(/Common/icons/star6.png);
+        star-background: url(../../../icons/star4.png);
+        star-secondary: url(../../../icons/star5.png);
+        star-foreground: url(../../../icons/star6.png);
     }
     .align-right{
         justify-content: flex-end;

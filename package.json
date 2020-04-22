@@ -1,10 +1,10 @@
 {
-  "name": "hui.mobi.start",
-  "version": "1.0.0",
+  "name": "h-ui-quickapp",
+  "version": "1.0.2",
   "subversion": {
     "toolkit": "0.2.2"
   },
-  "description": "",
+  "description": "快应用H-UI组件库开源 ## 简介  h-ui是一套为快应用开发者量身打制的UI组件库，以传统html5标签为基础，遵循主流前端框架样式命名习惯，对快应用原生组件二次封装而成，以实现快应用“全组件式开发”为目标，让快应用开发就像搭积木！",
   "scripts": {
     "build": "hap build",
     "release": "hap release",
@@ -27,5 +27,22 @@
   },
   "browserslist": [
     "chrome 65"
-  ]
+  ],
+  "main": "babel.config.js",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/H-UI-quickapp/H-UI.git"
+  },
+  "keywords": [
+    "quickapp",
+    "hui",
+    "h-ui"
+  ],
+  "author": "fastapp@139.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/H-UI-quickapp/H-UI/issues"
+  },
+  "homepage": "https://github.com/H-UI-quickapp/H-UI#readme"
 }

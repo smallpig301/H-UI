@@ -46,7 +46,7 @@
 
     @font-face {
         font-family: hui;
-        src: url('/Common/fonts/hui.ttf');
+        src: url('https://h-ui.obs.cn-south-1.myhuaweicloud.com/font/hui.ttf');
     }
 
     .mask{

@@ -28,8 +28,8 @@
                 <flex-col width="{{colWidth}}" for="{{compData}}" h-style="margin-top: 8px;">
                     <stack style="align-items: flex-start;">
                         <pic if="{{type === 'Image'}}" src="{{$item}}" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
-                        <pic if="{{type === 'Video'}}" src="/Common/icons/video.png" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
-                        <pic if="{{type === 'File'}}" src="/Common/icons/file.png" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
+                        <pic if="{{type === 'Video'}}" src="../../../icons/video.png" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
+                        <pic if="{{type === 'File'}}" src="../../../icons/file.png" width="{{picSize}}" height="{{picSize}}" radius="8"></pic>
                         <text class="icon icon-sm upload-remove" onclick="handleRemove($item)">&#xe719;</text>
                     </stack>
                 </flex-col>
@@ -54,7 +54,7 @@
 
     @font-face {
         font-family: hui;
-        src: url('/Common/fonts/hui.ttf');
+        src: url('https://h-ui.obs.cn-south-1.myhuaweicloud.com/font/hui.ttf');
     }
 
     .upload {

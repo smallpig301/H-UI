@@ -33,6 +33,12 @@ https://h-ui-mobi.blog.csdn.net
 抖音名：快应用H-UI
 
 ## 版本说明
+### Ver 1.0.2
+支持npm安装H-UI组件库，指令：cnpm install h-ui-quickapp
+适配npm安装后的组件调用，调整字体文件及本地图片路径(放弃绝对路径调用)，兼容联盟快应用和华为快应用：
+字体文件改用远程路径；
+本地图片引用从'/Common/icons'绝对路径改为相对路径。
+
 ### Ver 1.0.1
 全面兼容快应用联盟和华为快应用！
 如果使用快应用联盟的IDE编译代码，会使用"快应用调试器"解析代码，编译代码前请将"/Common/utils/config.js"中的loaderConfig配置为"UNION"；
