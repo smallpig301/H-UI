@@ -250,9 +250,6 @@
             audioLimit: {
                 default: 30 * 1024 * 1024  //30M
             },
-            audioExpiration: {
-                default: 5 //超时，默认5分钟
-            },
             disabled:{
                 default: false
             },

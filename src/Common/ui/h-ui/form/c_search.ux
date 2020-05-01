@@ -79,16 +79,13 @@
             placeholder: {
                 default: ''
             },
-            value: {
-                default: ''
-            },
             hStyle:{
                 default: ''
             }
         },
         data() {
             return {
-                compValue: this.value
+                compValue: ''
             }
         },
         rediectUrl() {

@@ -33,6 +33,9 @@ https://h-ui-mobi.blog.csdn.net
 抖音名：快应用H-UI
 
 ## 版本说明
+### Ver 1.0.4
+废除搜索组件props属性value及编辑器组件props属性audioExpiration。本次优化对原有调用方式无任何影响。
+
 ### Ver 1.0.3
 废除数字输入组件byte,short,int和long中未使用的props属性type。本次优化对原有调用方式无任何影响。
 
