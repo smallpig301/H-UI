@@ -33,6 +33,9 @@ https://h-ui-mobi.blog.csdn.net
 抖音名：快应用H-UI
 
 ## 版本说明
+### Ver 1.0.3
+废除数字输入组件byte,short,int和long中未使用的props属性type。本次优化对原有调用方式无任何影响。
+
 ### Ver 1.0.2
 支持npm安装H-UI组件库，指令：cnpm install h-ui-quickapp
 适配npm安装后的组件调用，调整字体文件及本地图片路径(放弃绝对路径调用)，兼容联盟快应用和华为快应用：
