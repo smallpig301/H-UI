@@ -39,8 +39,8 @@
         props: {
             id :{},
             data: {},
-            color: {
-                default: 'red'
+            hexColor: {
+                default: '#ff0000'
             },
             size: {
                 default: 10
@@ -224,7 +224,7 @@
                     ctx.beginPath()
                     ctx.moveTo(x + this.dayIndex(arr[j][this.compStructure[0]]) * 50 , 0)
                     ctx.arc(x + this.dayIndex(arr[j][this.compStructure[0]]) * 50 , 0, 12 * (arr[j][this.compStructure[2]] / this.compMaxValue), 0,p * 2, false)
-                    ctx.fillStyle = this.color
+                    ctx.fillStyle = this.hexColor
                     ctx.fill()
                     ctx.closePath()
                 }
@@ -399,7 +399,7 @@
                     if(this.compBubble){
                         size = Math.ceil((Number(this.data[i][this.compStructure[2]]) / this.compMaxValue)*50)
                     }
-                    var color = this.color
+                    var color = this.hexColor
 
                     if(this.group){
                         for(var j=0;j<this.compGroupColor.length;j++){

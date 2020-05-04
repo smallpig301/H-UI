@@ -39,8 +39,8 @@
         props: {
             id :{},
             data: {},
-            color: {
-                default: 'red'
+            hexColor: {
+                default: '#ff0000'
             },
             hStyle:{
                 default: ''
@@ -137,7 +137,7 @@
                 y = (1-this.data[i]['value']/(this.stepValue * 5))*600 + 75
                 ctx.lineTo(x , y)
             }
-            ctx.strokeStyle = this.color
+            ctx.strokeStyle = this.hexColor
             ctx.lineWidth = 3
             ctx.stroke()
             ctx.closePath()
@@ -150,7 +150,7 @@
                 y = (1-this.data[i]['value']/(this.stepValue * 5))*600 + 75
                 ctx.beginPath()
                 ctx.arc(x, y, 6, 0,p * 2, false)
-                ctx.fillStyle = this.color
+                ctx.fillStyle = this.hexColor
                 ctx.fill()
                 ctx.closePath()
 

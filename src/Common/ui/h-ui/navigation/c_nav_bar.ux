@@ -18,11 +18,11 @@
     <div class="nav">
         <div class="nav-bar" style="{{compBgColor}}{{compHeight}}">
             <div>
-                <icon if="{{showBack === 'true'}}" type="menu-left" size="70" color="{{color}}" onclick="handleBack"></icon>
+                <icon if="{{!hideBack}}" type="menu-left" size="70" color="{{color}}" onclick="handleBack"></icon>
             </div>
             <text class="{{color}}" style="{{compFontSize}}{{compAlign}}">{{title}}</text>
             <div>
-                <icon if="{{showOption === 'true'}}" type="option-vertical" size="80" color="{{color}}" onclick="handleOption"></icon>
+                <icon if="{{!hideOption}}" type="option-vertical" size="80" color="{{color}}" onclick="handleOption"></icon>
             </div>
         </div>
 
@@ -143,20 +143,20 @@
             fontSize: {
                 default: 40
             },
-            align: {
-                default: 'center'
+            alignLeft: {
+                default: false
             },
             color: {
                 default: 'white'
             },
-            bgColor: {
+            hexColor: {
                 default: '#343a40'  // 暗色
             },
-            showBack: {
-                default: 'true'
+            hideBack: {
+                default: false
             },
-            showOption: {
-                default: 'true'
+            hideOption: {
+                default: false
             },
             shareText: {
                 default: ''
@@ -173,13 +173,13 @@
         },
 
         onInit() { //设置状态栏颜色
-            this.$page.setStatusBar({ backgroundColor: this.bgColor })
+            this.$page.setStatusBar({ backgroundColor: this.hexColor })
 
         },
 
         computed: {
             compBgColor() {
-                return 'background-color: ' + this.bgColor + ';'
+                return 'background-color: ' + this.hexColor + ';'
             },
             compHeight() {
                 return 'height: ' + this.height + 'px;'
@@ -188,7 +188,7 @@
                 return 'font-size: ' + this.fontSize + 'px;'
             },
             compAlign() {
-                return 'text-align: ' + this.align + ';'
+                return this.alignLeft ? 'text-align: left;' : 'text-align: center;'
             },
             compStyle() {
                 return this.isShow ? 'show' : 'hide'

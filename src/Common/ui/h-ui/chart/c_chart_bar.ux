@@ -39,7 +39,7 @@
         props: {
             id :{},
             data: {},
-            color: {
+            hexColor: {
                 default: '#4c98d5'
             },
             hStyle:{
@@ -129,7 +129,7 @@
 
             // 绘制柱状图
             x = left + colWidth/5
-            ctx.fillStyle = this.color
+            ctx.fillStyle = this.hexColor
             for(i = 0, len = this.data.length; i < len; i++){
                 y = (1-this.data[i]['value']/(this.stepValue * 5))*600 + 75
                 ctx.fillRect(x, y, (colWidth * 3)/5, (this.data[i]['value']/(this.stepValue * 5))*600);

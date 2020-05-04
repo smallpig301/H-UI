@@ -16,12 +16,12 @@
 <import name="divider" src="../advance/c_divider"></import>
 <template>
     <div class="loadmore" style="{{hStyle}}">
-        <divider if="{{status==='more'}}" text="{{moreText}}"></divider>
-        <div if="{{status==='loading'}}" class="loadmore-loading">
+        <divider if="{{loadingStatus==='more'}}" text="{{moreText}}"></divider>
+        <div if="{{loadingStatus==='loading'}}" class="loadmore-loading">
             <progress class="loadmore-circular" type="circular"></progress>
             <text>{{loadingText}}</text>
         </div>
-        <divider if="{{status==='noMore'}}" text="{{noMoreText}}"></divider>
+        <divider if="{{loadingStatus==='noMore'}}" text="{{noMoreText}}"></divider>
     </div>
 </template>
 
@@ -42,7 +42,7 @@
 <script>
   export default {
     props: {
-        status: {
+        loadingStatus: {
             // 状态，支持more,loading,noMore
             default: 'more'
         },

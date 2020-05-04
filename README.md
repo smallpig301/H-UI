@@ -33,6 +33,40 @@ https://h-ui-mobi.blog.csdn.net
 抖音名：快应用H-UI
 
 ## 版本说明
+### Ver 1.0.5
+为了使相同props属性名在不同组件中的调用方式保持一致，优化导航栏组件、分页器、数据加载提示、折线图、柱状图、散点图、饼状图及漏斗图组件props属性命名。
+
+导航栏(导航组件 - 导航栏):
+'align'属性改为'align-left'； 
+'bg-color'属性改为'hex-color'； 
+'show-back'属性改为'hide-back'，默认值为false；
+'show-option'属性改为'hide-option'，默认值为false；
+
+分页器(导航组件 - 分页器):
+'mode'属性改为'pagination-mode'；
+
+数据加载提示(操作反馈 - 数据加载提示):
+'status'属性改为'loading-status'；
+
+折线图(图表组件 - 折线图):
+'color'属性改为'hex-color'；
+
+柱状图(图表组件 - 柱状图):
+'color'属性改为'hex-color'；
+
+散点图(图表组件 - 散点图):
+'color'属性改为'hex-color'；
+
+饼状图(图表组件 - 饼状图):
+'active'属性改为'current'；
+
+漏斗图(图表组件 - 漏斗图):
+'align'属性改为'chart-align'；
+
+官方博客(https://h-ui-mobi.blog.csdn.net)已同步更新。
+快应用'HUI开发文档'v1.0.5版已同步。
+请在调用组件时采用新的属性名。
+
 ### Ver 1.0.4
 废除搜索组件props属性value及编辑器组件props属性audioExpiration。本次优化对原有调用方式无任何影响。
 

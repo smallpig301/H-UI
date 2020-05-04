@@ -44,7 +44,7 @@
                 // 金字塔
                 default: false
             },
-            align: {
+            chartAlign: {
                 // 对齐方式，支持：left,center,right
                 default: 'center'
             },
@@ -59,6 +59,7 @@
 
         data() {
             return {
+                align: this.chartAlign,
                 maxValue: 0,
                 len: this.data.length
             }

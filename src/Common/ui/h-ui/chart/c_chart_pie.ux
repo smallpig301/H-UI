@@ -40,7 +40,7 @@
             id :{},
             data: {},
             colors: {},
-            active: {
+            current: {
                 default: '999'
             },
             right: {
@@ -60,7 +60,7 @@
         data() {
             return {
                 maxValue: 0,
-                compActive: Number(this.active)
+                compActive: Number(this.current)
             }
         },
 
