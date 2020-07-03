@@ -57,11 +57,15 @@
     }
 
     .nav{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
         width: 100%;
         flex-direction: column;
         &-bar {
             width: 100%;
-            padding: 20px;
+            padding: 40px 20px 0px 20px;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;

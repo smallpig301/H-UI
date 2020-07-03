@@ -1,8 +1,8 @@
 {
     "package": "hui.mobi.start",
     "name": "我的快应用",
-    "versionName": "1.0.5",
-    "versionCode": 105,
+    "versionName": "1.0.6",
+    "versionCode": 106,
     "icon": "/Common/icons/logo.png",
     "minPlatformVersion": 1060,
     "features": [
