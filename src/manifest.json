@@ -71,6 +71,9 @@
         },
         {
             "name": "system.shortcut"
+        },
+        {
+            "name": "system.storage"
         }
     ],
     "permissions": [
@@ -88,6 +91,8 @@
         }
     },
     "display": {
+        "statusBarImmersive": true,
+        "statusBarTextStyle": "light",
         "pages": {
             "About": {
                 "titleBarText": "H-UI"

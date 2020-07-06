@@ -177,8 +177,7 @@
         },
 
         onInit() { //设置状态栏颜色
-            this.$page.setStatusBar({ backgroundColor: this.hexColor })
-
+            this.$page.setStatusBar({immersive:true, textStyle:'light', backgroundColor:'#000000', backgroundOpacity:0})
         },
 
         computed: {
