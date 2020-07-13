@@ -147,19 +147,11 @@
                             break
                         case 'left':
                             style = 'border-top-left-radius:' + radiusValue + 'px;'
-                            if(loaderConfig.type.toUpperCase() === 'HUAWEI'){
-                                style += 'border-bottom-right-radius:' + radiusValue + 'px;'//TODO 快应用bug，图片底部圆角解析反了
-                            }else {
-                                style += 'border-bottom-left-radius:' + radiusValue + 'px;'
-                            }
+                            style += 'border-bottom-left-radius:' + radiusValue + 'px;'
                             break
                         case 'right':
                             style = 'border-top-right-radius:' + radiusValue + 'px;'
-                            if(loaderConfig.type.toUpperCase() === 'HUAWEI'){
-                                style += 'border-bottom-left-radius:' + radiusValue + 'px;'//TODO 快应用bug，图片底部圆角解析反了
-                            }else {
-                                style += 'border-bottom-right-radius:' + radiusValue + 'px;'
-                            }
+                            style += 'border-bottom-right-radius:' + radiusValue + 'px;'
                             break
                         default:
                             style = 'border-radius:' + radiusValue + 'px;'
