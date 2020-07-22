@@ -32,3 +32,6 @@ export const amapConfig = {
 export const jdcloudConfig = {
     key: '' //京东万象APPKEY  https://wx.jdcloud.com/api
 }
+export const gatewayConfig = {
+    BaseApi: 'http://192.168.3.5:9998' //网关
+}

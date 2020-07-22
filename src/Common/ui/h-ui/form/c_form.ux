@@ -51,6 +51,7 @@
 
 <script>
     import fetch from '@system.fetch'
+    import { gatewayConfig } from '../../../utils/config'
 
     export default {
         props: {
@@ -85,7 +86,7 @@
                     type: 'warning'
                 });
                 const response = await fetch.fetch({
-                    url: this.action,
+                    url: gatewayConfig.BaseApi + this.action,
                     data: this.params,
                     header: this.header,
                     method: this.method,
@@ -106,7 +107,7 @@
                             break
                         case '-1': //服务端表单基本校验未通过
                             this.formError = '服务端表单校验未通过。'
-                            this.errMsg = '错误编码：-1'
+                            this.errMsg = response.data.data.data
 
                             this.$child(this.id + '_message').showMessage({
                                 text: '表单提交失败。',
@@ -124,12 +125,13 @@
                             break
                     }
                 }else {
-                    this.formError = ''
-                    this.errMsg = ''
+                    console.log(JSON.stringify(response.data))
+                    this.formError = response.data.code + '错误'
+                    this.errMsg = JSON.stringify(response.data.data)
 
                     this.$child(this.id + '_message').showMessage({
-                        text: '表单提交成功。',
-                        type: 'success'
+                        text: '表单提交失败。',
+                        type: 'danger'
                     });
                 }
 
